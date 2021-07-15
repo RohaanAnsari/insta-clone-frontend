@@ -19,6 +19,7 @@ import {
   Post,
 } from './styles';
 import Loader2 from '../Loader2/Loader2';
+import Profile from '../Profile/Profile';
 
 const ProfileUser = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,9 @@ const ProfileUser = () => {
       </div>
     );
   }
+  if (userid === auth.user._id) {
+    return <Profile />;
+  }
 
   return (
     <>
@@ -65,6 +69,7 @@ const ProfileUser = () => {
             <UserDetails>
               <Top>
                 <h1>{user?.user?.name}</h1>
+
                 <span>
                   {user.followReq ? (
                     <Loader2 left="-5rem" />

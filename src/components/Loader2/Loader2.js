@@ -1,5 +1,6 @@
-import React from 'react'
-import './styles.css'
+import React from 'react';
+import './styles.css';
+import styled from 'styled-components';
 
 const Loader2 = () => {
   return (
@@ -19,7 +20,7 @@ const Loader2 = () => {
         <div class="sk-circle12 sk-circle"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Loader2
+export default Loader2;

@@ -48,38 +48,59 @@ const Signup = () => {
       return;
     }
 
-    const data = new FormData();
-    data.append('file', profile);
-    data.append('upload_preset', 'insta-clone');
-    data.append('cloud_name', 'cny');
-    fetch('https://api.cloudinary.com/v1_1/cdy/image/upload', {
-      method: 'post',
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUrl(data.url);
-        setBool(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setBool(false);
-      });
+    // const data = new FormData();
+    // data.append('file', profile);
+    // data.append('upload_preset', 'insta-clone');
+    // data.append('cloud_name', 'cny');
+    // fetch('https://api.cloudinary.com/v1_1/cdy/image/upload', {
+    //   method: 'post',
+    //   body: data,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setUrl(data.url);
+    //     setBool(false);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     setBool(false);
+    //   });
+    setBool(true);
+    const user = {
+      name,
+      fullName,
+      email,
+      password,
+      profilePicture: url,
+    };
+    dispatch(signup(user)).then(() => {
+      setBool(false);
+      setTimeout(() => {
+        setMessage('');
+      }, 1000);
+      user.loading = false;
+      history.push('/signin');
+    });
   };
 
-  useEffect(() => {
-    if (url) {
-      setBool(true);
-      const user = {
-        name,
-        fullName,
-        email,
-        password,
-        profilePicture: url,
-      };
-      dispatch(signup(user)).then(() => history.push('/signin'));
-    }
-  }, [url]);
+  // useEffect(() => {
+  //   if (url) {
+  //     setBool(true);
+  //     const user = {
+  //       name,
+  //       fullName,
+  //       email,
+  //       password,
+  //       profilePicture: url,
+  //     };
+  //     dispatch(signup(user)).then(() => {
+  //       history.push('/signin');
+  //       setBool(false);
+  //       setMessage('');
+  //       user.loading = false;
+  //     });
+  //   }
+  // }, [url]);
 
   if (auth.authenticate) {
     return <Redirect to="/" />;
@@ -94,7 +115,7 @@ const Signup = () => {
         <Text>Sign up to see photos and videos from your friends.</Text>
         <Divider />
         {error && <Error none={message && 'none'}>{error}</Error>}
-        {!user.error && user.message && <Message>{user.message}</Message>}
+        {/* {!user.error && user.message && <Message>{user.message}</Message>} */}
         <Form>
           <TextInput
             required
@@ -130,12 +151,12 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <TextInput
+          {/* <TextInput
             required
             variant="outlined"
             type="file"
             onChange={(e) => setProfile(e.target.files[0])}
-          />
+          /> */}
           {user.loading ? (
             <Loader left="-3.5rem" />
           ) : (

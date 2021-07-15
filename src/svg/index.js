@@ -10,3 +10,5 @@ export { default as ChatActive } from './ChatActive';
 export { default as ChatUnActive } from './ChatUnActive';
 export { default as FeedUnActive } from './FeedUnActive';
 export { default as FeedActive } from './FeedActive';
+export { default as NewMessage } from './NewMessage';
+export { default as ArrowDown } from './ArrowDown';

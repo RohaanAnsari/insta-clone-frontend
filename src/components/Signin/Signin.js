@@ -81,7 +81,7 @@ const Signin = () => {
           {!auth.authenticating && <Button onClick={signin}>Log In</Button>}
         </Form>
         {auth.authenticating && <Loader left="-1rem" />}
-        <StyledLink color="#262626" marginTop="15px">
+        <StyledLink to="/reset" color="#262626" marginTop="15px">
           Forgot Password ?
         </StyledLink>
       </Wrapper>

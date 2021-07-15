@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Searchbar from '../Searchbar';
+import { useSelector } from 'react-redux';
 import {
   HomeActive,
   HomeUnActive,
@@ -8,7 +10,6 @@ import {
   FeedActive,
   FeedUnActive,
 } from '../../svg';
-
 import {
   Wrapper,
   Container,
@@ -25,8 +26,7 @@ import {
 } from './styles';
 
 const Navbar = () => {
-  const location = useLocation();
-
+  const user = useSelector((state) => state.user);
   return (
     <Wrapper>
       <Container>
@@ -34,8 +34,7 @@ const Navbar = () => {
           <img src="/images/instagram-logo.png" alt="Instagram" />
         </Logo>
         <Search>
-          <SearchIcon />
-          <input placeholder="Search" type="search" />
+          <Searchbar placeholder="Search" data={user.allUsers} />
         </Search>
         <NavIcons>
           <Icons>

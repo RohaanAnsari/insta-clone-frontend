@@ -127,7 +127,6 @@ export const SuggestionsContainer = styled.div`
   overflow-y: scroll;
   height: max-content;
   max-height: 300px;
-  /* border: 1px solid #DBDBDB; */
   &::-webkit-scrollbar {
     width: 8px;
     border-radius: 5px;
@@ -149,6 +148,7 @@ export const Suggestions = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px 6px;
+  max-height: 200px;
   & .MuiAvatar-root {
     width: 42px;
     height: 42px;
@@ -502,6 +502,7 @@ export const CommentDetails = styled.div`
     display: inline-block;
     margin-bottom: 5px;
     font-size: 12px;
+    position: sticky;
   }
 `;
 
@@ -540,4 +541,14 @@ export const Comment = styled.div`
       margin-left: 4px;
     }
   }
+`;
+
+export const ViewComments = styled.p`
+  color: #8e8e8e;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  margin: 3px auto;
+  margin-left: 21px;
 `;

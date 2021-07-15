@@ -1,4 +1,4 @@
-import { authConstants } from '../actions/constants';
+import { authConstants, userConstants } from '../actions/constants';
 
 const initState = {
   token: null,
@@ -7,6 +7,7 @@ const initState = {
     fullName: '',
     name: '',
     email: '',
+    bio: '',
     profilePicture: '',
     followers: [],
     following: [],
@@ -17,10 +18,14 @@ const initState = {
   error: '',
   message: '',
   following: [],
+  resetError: '',
+  resetMessage: '',
+  updatePasswordError: '',
+  updatePasswordMsg: '',
 };
 
 export default (state = initState, action) => {
-  // console.log(action);
+  console.log(action);
   switch (action.type) {
     case authConstants.LOGIN_REQUEST:
       state = {
@@ -63,6 +68,32 @@ export default (state = initState, action) => {
         user: action.payload.user,
       };
       break;
+    case userConstants.UPDATE_USER_DETAILS:
+      state = {
+        ...state,
+        user: action.payload.user,
+      };
+      break;
+    case authConstants.RESET_PASSWORD_SUCCESS:
+      state = {
+        ...state,
+        resetMessage: action.payload.message,
+      };
+    case authConstants.RESET_PASSWORD_FAILURE:
+      state = {
+        ...state,
+        resetError: action.payload.error,
+      };
+    case authConstants.UPDATE_PASSWORD_SUCCESS:
+      state = {
+        ...state,
+        updatePasswordMsg: action.payload.message,
+      };
+    case authConstants.UPDATE_PASSWORD_FAILURE:
+      state = {
+        ...state,
+        updatePasswordError: action.payload.error,
+      };
   }
   return state;
 };

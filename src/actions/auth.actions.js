@@ -1,5 +1,5 @@
 import axios from '../components/axios/axios';
-import { authConstants } from './constants';
+import { authConstants, userConstants } from './constants';
 import { getAllPosts } from './post.actions';
 
 export const login = (user) => {
@@ -65,5 +65,77 @@ export const updateUser = (user) => {
         user,
       },
     });
+  };
+};
+
+export const updateProfilePicture = (url) => {
+  return async (dispatch) => {
+    const res = await axios.put('/updateprofilepicture', {
+      profilePicture: url,
+    });
+    dispatch({
+      type: userConstants.UPDATE_USER_DETAILS,
+      payload: {
+        user: res.data.result,
+      },
+    });
+    localStorage.setItem('user', JSON.stringify(res.data.result));
+  };
+};
+
+export const updateBio = (bio) => {
+  return async (dispatch) => {
+    const res = await axios.put('/updatebio', {
+      bio,
+    });
+    dispatch({
+      type: userConstants.UPDATE_USER_DETAILS,
+      payload: {
+        user: res.data.result,
+      },
+    });
+    localStorage.setItem('user', JSON.stringify(res.data.result));
+  };
+};
+
+export const resetPassword = (email) => {
+  return async (dispatch) => {
+    const res = await axios.post('/reset-password', { email });
+    console.log(res);
+    if (res.status === 200) {
+      dispatch({
+        type: authConstants.RESET_PASSWORD_SUCCESS,
+        payload: {
+          message: res.data.message,
+        },
+      });
+    } else {
+      dispatch({
+        type: authConstants.RESET_PASSWORD_FAILURE,
+        payload: {
+          error: res.data.error,
+        },
+      });
+    }
+  };
+};
+
+export const updatePassword = (password, token) => {
+  return async (dispatch) => {
+    const res = await axios.post('/new-password', { password, token });
+    console.log(res);
+    if (res.status === 200) {
+      dispatch({
+        type: authConstants.UPDATE_PASSWORD_SUCCESS,
+        payload: { message: res.data.message },
+      });
+    } else {
+      if (res.status === 206) {
+        dispatch({
+          type: authConstants.UPDATE_PASSWORD_FAILURE,
+          payload: { error: res.data.error },
+        });
+      }
+    }
   };
 };

@@ -54,6 +54,7 @@ export const Top = styled.div`
     letter-spacing: 0.5px;
     padding: 5px 9px;
     cursor: pointer;
+    background: transparent;
     &:active {
       background-color: #dbdbdb;
     }
@@ -133,10 +134,12 @@ export const Post = styled.div`
 export const UpdateModal = styled.div`
   padding: 30px;
   height: max-content;
-  width: 550px;
+  width: 600px;
   background: #fff;
 
   header {
+    /* border: 1px solid #272727; */
+    justify-content: space-between;
     .MuiAvatar-root {
       width: 70px;
       height: 70px;
@@ -159,24 +162,44 @@ export const UpdateModal = styled.div`
         cursor: pointer;
       }
     }
+
+    button {
+      padding: 8px 15px;
+      border: 1px dashed #8e8e8e;
+      border-radius: 5px;
+      background: transparent;
+      font-weight: 600;
+      cursor: pointer;
+    }
   }
 
   span {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-left: 8px;
     margin-top: 20px;
 
     p {
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 400;
       text-align: center;
       margin-right: 20px;
     }
 
     input {
       padding: 5px;
-      width: 80%;
+      width: 45%;
+      margin-left: 23px;
+    }
+    button {
+      background: transparent;
+      padding: 8px 27px;
+      border: 1px dashed #8e8e8e;
+      border-radius: 5px;
+      margin-left: 38px;
+      font-weight: 600;
+      cursor: pointer;
     }
   }
 `;

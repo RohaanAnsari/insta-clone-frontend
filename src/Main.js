@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { isUserLoggedIn } from './actions/auth.actions';
+import { getAllPosts, getMyFollowingsPost } from './actions/post.actions';
+import { cleanUser } from './actions/user.actions';
+
 import {
   Layout,
   Home,
@@ -10,21 +15,20 @@ import {
   Signup,
   PrivateRoute,
   ProfileUser,
+  Reset,
+  UpdatePassword,
 } from './components';
-import { useDispatch, useSelector } from 'react-redux';
-import { isUserLoggedIn } from './actions/auth.actions';
-import { getAllPosts } from './actions/post.actions';
-import { cleanUser } from './actions/user.actions';
 
 const Main = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const history = useHistory();
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    console.log('pageview', location.pathname);
     if (location.pathname === '/') {
       dispatch(getAllPosts());
+      dispatch(getMyFollowingsPost());
       dispatch(cleanUser());
     }
   }, [location]);
@@ -32,10 +36,13 @@ const Main = () => {
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
-      dispatch(getAllPosts());
     }
     if (auth.authenticate) {
       dispatch(getAllPosts());
+      dispatch(getMyFollowingsPost());
+      if (location.pathname.startsWith('/reset')) {
+        history.push('/');
+      }
     }
   }, [auth.authenticate]);
 
@@ -44,17 +51,14 @@ const Main = () => {
       <Switch>
         <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
+        <Route exact path="/reset" component={Reset} />
+        <Route path="/reset/:token" component={UpdatePassword} />
         <Layout>
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute path="/messages" component={Messages} />
           <PrivateRoute path="/feed" component={Feed} />
           <PrivateRoute exact path="/profile" component={Profile} />
-          <PrivateRoute
-            forceRefresh={true}
-            exact
-            path="/profile/:userid"
-            component={ProfileUser}
-          />
+          <PrivateRoute exact path="/profile/:userid" component={ProfileUser} />
         </Layout>
       </Switch>
     </>

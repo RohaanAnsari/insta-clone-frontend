@@ -29,6 +29,7 @@ import {
   CommentDetails,
   Comment,
   PostedBy,
+  ViewComments,
 } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../../actions/auth.actions';
@@ -65,6 +66,9 @@ const Home = () => {
   const [error, setError] = useState(post.createPostError);
   const [message, setMessage] = useState('');
   const [bool, setBool] = useState(post.creating);
+
+  // const [input, setInput] = useState('');
+  // const [selectedChoices, setSelectedChoices] = useState(choices);
 
   const handleOpen = () => {
     setOpen(true);
@@ -181,24 +185,24 @@ const Home = () => {
     }
   }, [url]);
 
-  if (post.myFollowingsPost.length === 0) {
-    return (
-      <ZeroPost>
-        <h1>Follow some people to see their posts here</h1>
-        <span>
-          See posts from other people
-          <p
-            onClick={() => {
-              history.push('/feed');
-              localStorage.setItem('location', 'feed');
-            }}
-          >
-            Go to feed
-          </p>
-        </span>
-      </ZeroPost>
-    );
-  }
+  // if (post.myFollowingsPost.length === 0) {
+  //   return (
+  //     <ZeroPost>
+  //       <h1>Follow some people to see their posts here</h1>
+  //       <span>
+  //         See posts from other people
+  //         <p
+  //           onClick={() => {
+  //             history.push('/feed');
+  //             localStorage.setItem('location', 'feed');
+  //           }}
+  //         >
+  //           Go to feed
+  //         </p>
+  //       </span>
+  //     </ZeroPost>
+  //   );
+  // }
   return (
     <Wrapper>
       <ContentLeft>
@@ -269,8 +273,10 @@ const Home = () => {
                   <LikesNumber>{item.likes.length} Likes</LikesNumber>
                 )}
 
+                {item.comments.length > 1 && (
+                  <ViewComments>View all comments</ViewComments>
+                )}
                 <CommentDetails forceScroll="true">
-                  {item.comments.length > 1 && <p>View all comments</p>}
                   <ReactScrollableFeed className="scrollable-div">
                     {item.comments.map((comment) => {
                       let date = new Date(comment.createdAt);

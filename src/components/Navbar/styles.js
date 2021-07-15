@@ -47,7 +47,7 @@ export const Logo = styled(Link)`
 
 export const Search = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   max-width: 215px;
   width: 100%;
@@ -55,11 +55,10 @@ export const Search = styled.div`
   min-height: auto;
   min-width: 125px;
   border: 1px solid #dbdbdb;
-  padding: 3px 10px 3px 25px;
-  padding-left: 7px;
-  background: #fafafa;
-  overflow: hidden;
+  padding: 3px 10px 3px 11px;
   border-radius: 5px;
+  overflow: hidden;
+  background: #fafafa;
   height: 28px;
 
   input {
@@ -80,6 +79,7 @@ export const Search = styled.div`
 
 export const SearchIcon = styled(SearchRoundedIcon)`
   height: 28px !important;
+  margin-left: 20px;
   @media (max-width: 870px) {
     height: 22px !important;
   }

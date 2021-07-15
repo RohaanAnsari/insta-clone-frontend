@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
 `;
 
 export const LeftContainer = styled.div`
-  background: red;
   width: 65%;
 
   div {

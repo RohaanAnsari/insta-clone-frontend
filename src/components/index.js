@@ -14,3 +14,6 @@ export { default as ModalPostDetails } from './ModalPostDetails/index';
 export { default as PrivateRoute } from './HOC/PrivateRoute';
 export { default as Loader } from './Loader/Loader';
 export { default as Loader2 } from './Loader2/Loader2';
+export { default as Searchbar } from './Searchbar/index';
+export { default as Reset } from './Reset/Reset';
+export { default as UpdatePassword } from './UpdatePassword/UpdatePassword';

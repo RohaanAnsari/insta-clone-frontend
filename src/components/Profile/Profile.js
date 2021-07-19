@@ -21,7 +21,7 @@ import {
   updateProfilePicture,
   updateBio,
 } from '../../actions/auth.actions';
-import { Modal2, ModalPostDetails, Loader2 } from '../../components';
+import { Modal2, ModalPostDetails } from '../../components';
 
 const Profile = () => {
   const dispatch = useDispatch();

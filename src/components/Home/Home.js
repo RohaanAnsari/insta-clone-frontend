@@ -16,7 +16,6 @@ import {
   BtnsRight,
   Button,
   CommentSection,
-  PostBtn,
   SuggestionsContainer,
   Suggestions,
   AddModalButton,
@@ -35,7 +34,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../../actions/auth.actions';
 import {
   createPost,
-  getAllPosts,
   likePost,
   unLikePost,
   comment,
@@ -46,7 +44,7 @@ import {
 } from '../../actions/post.actions';
 import Loader from '../Loader/Loader';
 import Loader2 from '../Loader2/Loader2';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getAllUsers, getUserProfile } from '../../actions/user.actions';
 import ReactScrollableFeed from 'react-scrollable-feed';
 import moment from 'moment';
@@ -66,9 +64,6 @@ const Home = () => {
   const [error, setError] = useState(post.createPostError);
   const [message, setMessage] = useState('');
   const [bool, setBool] = useState(post.creating);
-
-  // const [input, setInput] = useState('');
-  // const [selectedChoices, setSelectedChoices] = useState(choices);
 
   const handleOpen = () => {
     setOpen(true);
@@ -163,6 +158,7 @@ const Home = () => {
     setBody('');
     setImage('');
     setUrl('');
+    setMessage('');
   }, [auth.user]);
 
   useEffect(() => {

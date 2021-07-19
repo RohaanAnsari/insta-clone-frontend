@@ -519,8 +519,8 @@ export const Comment = styled.div`
     display: flex;
 
     p {
-      color: #262626;
       font-size: 12px;
+      color: #262626;
       word-wrap: break-word;
       overflow-wrap: break-word;
       word-wrap: break-word;

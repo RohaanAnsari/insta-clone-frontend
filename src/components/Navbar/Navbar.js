@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Searchbar from '../Searchbar';
 import { useSelector } from 'react-redux';
@@ -16,7 +16,6 @@ import {
   Logo,
   Search,
   NavIcons,
-  SearchIcon,
   Icons,
   FavIconActive,
   FavIconUnActive,

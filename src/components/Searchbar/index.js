@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
-import CloseIcon from '@material-ui/icons/Close';
 import Avatar from '@material-ui/core/Avatar';
 import { Wrapper, Inputs, Result, User } from './styles';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getUserProfile } from '../../actions/user.actions';
-import OutsideClickHandler from 'react-outside-click-handler';
 
 const Searchbar = ({ placeholder, data, top }) => {
   const dispatch = useDispatch();

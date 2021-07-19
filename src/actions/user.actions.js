@@ -48,6 +48,20 @@ const getUserProfile = (id) => {
   };
 };
 
+export const getUserInfo = (id) => {
+  return async (dispatch) => {
+    const res = await axios.post('/users/info', {
+      ids: id,
+    });
+    if (res.status === 200) {
+      dispatch({
+        type: userConstants.GET_USER_INFO,
+        payload: { users: res.data.user },
+      });
+    }
+  };
+};
+
 export const getAllUsers = () => {
   return async (dispatch) => {
     const res = await axios.get('/getallusers');

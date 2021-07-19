@@ -2,6 +2,7 @@ import { authConstants, userConstants } from '../actions/constants';
 
 const initState = {
   allUsers: [],
+  userChats: [],
   error: '',
   message: '',
   loading: false,
@@ -88,6 +89,11 @@ export default (state = initState, action) => {
         followReq: false,
       };
       break;
+    case userConstants.GET_USER_INFO:
+      state = {
+        ...state,
+        userChats: action.payload.users,
+      };
   }
   return state;
 };

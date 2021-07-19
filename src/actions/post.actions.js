@@ -116,7 +116,7 @@ export const deleteComment = (postId, commentId) => {
 const getMyFollowingsPost = () => {
   return async (dispatch) => {
     const res = await axios.get('/getsubposts');
-    console.log(res);
+    // console.log(res);
     dispatch({ type: postConstants.GET_MYFOLLOWINGS_POST_REQUEST });
     if (res.status === 200) {
       const { posts } = res.data;

@@ -27,11 +27,20 @@ const Main = () => {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      dispatch(getAllPosts());
       dispatch(getMyFollowingsPost());
       dispatch(cleanUser());
     }
-  }, [location]);
+
+    // if (location.pathname === '/') {
+    //   localStorage.setItem('location', 'home');
+    // } else if (location.pathname === '/messages') {
+    //   localStorage.setItem('location', 'home');
+    // } else if (location.pathname === '/') {
+    //   localStorage.setItem('location', 'home');
+    // } else if (location.pathname === '/') {
+    //   localStorage.setItem('location', 'home');
+    // }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!auth.authenticate) {
@@ -55,7 +64,12 @@ const Main = () => {
         <Route path="/reset/:token" component={UpdatePassword} />
         <Layout>
           <PrivateRoute exact path="/" component={Home} />
-          <PrivateRoute path="/messages" component={Messages} />
+          <Route
+            path="/messages"
+            // component={Messages}
+            render={() => <Messages />}
+          />
+
           <PrivateRoute path="/feed" component={Feed} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/profile/:userid" component={ProfileUser} />

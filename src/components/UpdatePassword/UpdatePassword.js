@@ -26,13 +26,14 @@ const UpdatePassword = () => {
 
   const passwordUpdate = (event) => {
     event.preventDefault();
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
     dispatch(updatePassword(password, token)).then(() => {
       setTimeout(() => {
         history.push('/signin');
+        setMsg('');
       }, 1500);
     });
   };

@@ -10,8 +10,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #c0c0c035;
-  font-family: -apple-system, system-ui, "BlinkMacSystemFont", "Segoe UI",
-    "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, system-ui, 'BlinkMacSystemFont', 'Segoe UI',
+    'Roboto', 'Helvetica Neue', Arial, sans-serif;
   height: max-content;
   -ms-overflow-style: none;
   scrollbar-width: none;

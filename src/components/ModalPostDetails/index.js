@@ -39,10 +39,9 @@ const ModalPostDetails = ({ item }) => {
     <Wrapper>
       <LeftContainer>
         <div>
-          <img src={item.photo} />
+          <img src={item.photo} alt="" />
         </div>
       </LeftContainer>
-      {/* style={{ cursor: post.liking ? 'wait' : 'normal' }} */}
       <RightContainer>
         <header>
           <Avatar src={item.postedBy.profilePicture} />

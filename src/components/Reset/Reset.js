@@ -22,8 +22,6 @@ const Reset = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
   const passwordReset = (e) => {
     e.preventDefault();
     console.log(email);

@@ -11,6 +11,7 @@ export const login = (user) => {
     });
     console.log('response after signin', res);
     if (res.status === 200) {
+      window.location.reload();
       dispatch(getAllPosts());
       const { token, user } = res.data;
       localStorage.setItem('jwt', token);
@@ -52,6 +53,7 @@ export const signout = () => {
   return async (dispatch) => {
     dispatch({ type: authConstants.LOGOUT_REQUEST });
     localStorage.clear();
+    window.location.reload();
     dispatch({ type: authConstants.LOGOUT_SUCCESS });
   };
 };

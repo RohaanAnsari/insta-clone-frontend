@@ -27,10 +27,10 @@ export const FullName = styled.h4`
 
 export const Parent = styled.div`
   width: 100%;
-  height: 81px;
+  height: 82px;
   background-color: #ffffff;
   border-radius: 2px;
-  margin-bottom: 3.5px;
+  /* margin-bottom: 3.5px; */
   transition: background-color 0.5s linear;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@ export const Parent = styled.div`
   }
 
   &:hover {
-    background-color: #eeeeee65;
+    background-color: #f0f8ff;
     ${FullName} {
       color: #010101;
     }
@@ -74,5 +74,16 @@ export const Content = styled.div`
 
 export const Icon = styled.span`
   background-color: transparent;
+  cursor: pointer;
+`;
+
+export const StyledBtn = styled.button`
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  padding: 5px 15px;
+  font-weight: 14.5px;
+  font-weight: 600;
+  height: 30px;
   cursor: pointer;
 `;

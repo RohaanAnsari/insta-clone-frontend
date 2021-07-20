@@ -29,9 +29,10 @@ const Reset = () => {
   };
 
   useEffect(() => {
-    auth.resetMessage = '';
-    auth.resetError = '';
-    console.log(auth.resetError);
+    if (auth) {
+      auth.resetMessage = '';
+      auth.resetError = '';
+    }
   }, []);
 
   return (
@@ -54,9 +55,11 @@ const Reset = () => {
             get back into your account.
           </h5>
         </Text>
-        {auth.resetMessage && <Message>{auth.resetMessage}</Message>}
-        {auth.resetError && (
-          <Error display={auth.resetMessage && 'none'}>{auth.resetError}</Error>
+        {auth?.resetMessage && <Message>{auth?.resetMessage}</Message>}
+        {auth?.resetError && (
+          <Error display={auth?.resetMessage && 'none'}>
+            {auth?.resetError}
+          </Error>
         )}
         <TextInput
           required

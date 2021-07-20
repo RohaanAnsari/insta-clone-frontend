@@ -78,7 +78,7 @@ const Navbar = () => {
                 </Link>
               )}
             </div>
-            <div>
+            {/* <div>
               {localStorage.getItem('location') === 'activity' ? (
                 <FavIconActive />
               ) : (
@@ -88,7 +88,7 @@ const Navbar = () => {
                   />
                 </Link>
               )}
-            </div>
+            </div> */}
             {/* <div style={{ background: 'red' }}> */}
             <div>
               {localStorage.getItem('location') === 'profile' ? (

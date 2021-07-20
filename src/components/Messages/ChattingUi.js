@@ -25,11 +25,11 @@ const ChattingUi = ({ message, own, senderId, receiverId }) => {
   }, []);
 
   useEffect(() => {
-    socket?.current?.emit('addUser', auth.user._id);
+    socket?.current?.emit('addUser', auth?.user._id);
     socket.current.on('getUsers', (users) => {
       console.log(users);
     });
-  }, [auth.user._id]);
+  }, [auth?.user._id]);
 
   const handleSubmit = (e, msg) => {
     if (msg === '') {

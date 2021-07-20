@@ -10,6 +10,7 @@ import moment from 'moment';
 import Head from './Head';
 import {
   getMessages,
+  getReceiverInfo,
   postNewMessage,
 } from '../../actions/conversation.actions';
 import ReactScrollableFeed from 'react-scrollable-feed';
@@ -39,18 +40,18 @@ import {
   getAllConversations,
   getConversation,
 } from '../../actions/conversation.actions';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Messages = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user);
   const conversation = useSelector((state) => state.conversation);
   const [receiverId, setReceiverId] = useState('');
-  const [arrivalMessage, setArrivalMessage] = useState(null);
 
-  const [messages, setMessages] = useState(conversation.messages);
+  const [arrivalMessage, setArrivalMessage] = useState(null);
 
   const scrollRef = useRef();
   const socket = useRef();
@@ -98,6 +99,7 @@ const Messages = () => {
   }, [auth.user._id]);
 
   const getText = (user) => {
+    dispatch(getReceiverInfo(user._id));
     setReceiverId(user._id);
     setCurrentChat(user);
     dispatch(getConversation(user._id));
@@ -113,7 +115,9 @@ const Messages = () => {
         text: msg,
         conversationId: conversation.conversationId,
       };
-      dispatch(postNewMessage(message)).then(() => e.target.reset());
+      dispatch(postNewMessage(message)).then(() => {
+        e.target.reset();
+      });
 
       socket.current.emit('sendMessage', {
         senderId: auth.user._id,
@@ -122,7 +126,9 @@ const Messages = () => {
       });
     }
   };
-
+  useEffect(() => {
+    console.log('from useEffect', receiverId);
+  }, [receiverId]);
   return (
     <Center>
       <Wrapper>
@@ -134,6 +140,7 @@ const Messages = () => {
                 <Chat
                   onClick={() => {
                     getText(user);
+                    setCurrentChat(user);
                   }}
                 >
                   <div>
@@ -157,8 +164,14 @@ const Messages = () => {
           ) : (
             <ChatArea>
               <Header>
-                <Avatar src={conversation.user.profilePicture} />
-                <h1>{conversation.user.name}</h1>
+                <Avatar src={conversation?.receiver?.profilePicture} />
+                <h1
+                  onClick={() => {
+                    history.push(`/profile/${conversation.receiver._id}`);
+                  }}
+                >
+                  {conversation?.receiver?.name}
+                </h1>
               </Header>
               <Main>
                 <Upper alignItems="flex-start">

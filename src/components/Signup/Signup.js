@@ -81,7 +81,7 @@ const Signup = () => {
   //   }
   // }, [url]);
 
-  if (auth.authenticate) {
+  if (auth?.authenticate) {
     return <Redirect to="/" />;
   }
 

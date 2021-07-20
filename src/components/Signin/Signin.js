@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import { Redirect } from 'react-router-dom';
 import { AuthComponents } from '../../components';
@@ -48,7 +48,7 @@ const Signin = () => {
     });
   };
 
-  if (auth.authenticate) {
+  if (auth?.authenticate) {
     return <Redirect to={`/`} />;
   }
 
@@ -58,7 +58,7 @@ const Signin = () => {
         <Logo>
           <img src="/images/logo.svg" alt="Instagram" />
         </Logo>
-        {auth.error && <Error>{auth.error}</Error>}
+        {auth?.error && <Error>{auth?.error}</Error>}
         <Form>
           <TextInput
             required
@@ -78,9 +78,9 @@ const Signin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {!auth.authenticating && <Button onClick={signin}>Log In</Button>}
+          {!auth?.authenticating && <Button onClick={signin}>Log In</Button>}
         </Form>
-        {auth.authenticating && <Loader left="-1rem" />}
+        {auth?.authenticating && <Loader left="-1rem" />}
         <StyledLink to="/reset" color="#262626" marginTop="15px">
           Forgot Password ?
         </StyledLink>

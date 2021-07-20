@@ -21,14 +21,19 @@ import {
   updateProfilePicture,
   updateBio,
 } from '../../actions/auth.actions';
-import { Modal2, ModalPostDetails } from '../../components';
+import { Modal2, ModalPostDetails, ModalSmall } from '../../components';
+
+import { getFollowers, getFollowings } from '../../actions/user.actions';
 
 const Profile = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.user);
   const post = useSelector((state) => state.post);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [followerModal, setFollowerModal] = useState(false);
+  const [followingModal, setFollowingModal] = useState(false);
   const [item, setItem] = useState({});
 
   const [image, setImage] = useState();
@@ -39,11 +44,9 @@ const Profile = () => {
 
   const handleOpenModal = () => {
     setOpenModal(true);
-    console.log(openModal);
   };
 
   const handleCloseModal = () => {
-    console.log(openModal);
     setOpenModal(false);
   };
 
@@ -53,6 +56,22 @@ const Profile = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const openFollower = () => {
+    setFollowerModal(true);
+  };
+
+  const closeFollower = () => {
+    setFollowerModal(false);
+  };
+
+  const openFollowing = () => {
+    setFollowingModal(true);
+  };
+
+  const closeFollowing = () => {
+    setFollowingModal(false);
   };
 
   const profileUpdate = () => {
@@ -96,6 +115,11 @@ const Profile = () => {
     dispatch(getMyPost());
     setError('');
   }, [post.myPosts.length]);
+
+  useEffect(() => {
+    dispatch(getFollowers(auth.user._id));
+    dispatch(getFollowings(auth.user._id));
+  }, []);
 
   return (
     <>
@@ -163,10 +187,10 @@ const Profile = () => {
               <Text>posts</Text>
 
               <Number>{auth.user.followers?.length}</Number>
-              <Text>followers</Text>
+              <Text onClick={openFollower}>followers</Text>
 
               <Number>{auth.user.following?.length}</Number>
-              <Text>following</Text>
+              <Text onClick={openFollowing}>following</Text>
             </Mid>
             <Bottom>
               <h2>{auth.user.fullName}</h2>
@@ -192,6 +216,12 @@ const Profile = () => {
       </Wrapper>
       <Modal2 open={openModal} handleClose={handleCloseModal}>
         <ModalPostDetails item={item} />
+      </Modal2>
+      <Modal2 open={followerModal} handleClose={closeFollower}>
+        <ModalSmall details={user.followers} follower={true} />
+      </Modal2>
+      <Modal2 open={followingModal} handleClose={closeFollowing}>
+        <ModalSmall details={user.followings} following={true} />
       </Modal2>
     </>
   );

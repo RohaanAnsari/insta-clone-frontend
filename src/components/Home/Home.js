@@ -159,7 +159,7 @@ const Home = () => {
     setImage('');
     setUrl('');
     setMessage('');
-  }, [auth.user]);
+  }, [auth?.user]);
 
   useEffect(() => {
     if (url) {

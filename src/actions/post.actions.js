@@ -18,7 +18,7 @@ const getAllPosts = () => {
 export const getMyPost = () => {
   return async (dispatch) => {
     const res = await axios.get('/mypost');
-    console.log('res after mypost', res);
+    // console.log('res after mypost', res);
     if (res.status === 200) {
       const { mypost } = res.data;
       dispatch({
@@ -50,7 +50,7 @@ export const createPost = (data) => {
         },
       });
     }
-    console.log('res after createPost', res);
+    // console.log('res after createPost', res);
   };
 };
 
@@ -60,7 +60,7 @@ export const likePost = (id) => {
     const res = await axios.put('/like', { postId: id });
     if (res.status === 200) {
       dispatch(getMyFollowingsPost());
-      console.log('likePost data', res.data);
+      // console.log('likePost data', res.data);
       dispatch({ type: postConstants.LIKE_POST });
     }
   };

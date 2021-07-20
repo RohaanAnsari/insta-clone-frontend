@@ -11,6 +11,8 @@ export const Center = styled.div`
 export const Wrapper = styled.div`
   height: 100%;
   width: 100%;
+  max-width: 975px;
+
   background-color: white;
   overflow: hidden;
   min-height: 85vh;
@@ -223,6 +225,11 @@ export const Header = styled.div`
     font-weight: 600;
     line-height: 24px;
     margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: 1px solid darkgray;
+    }
   }
 `;
 

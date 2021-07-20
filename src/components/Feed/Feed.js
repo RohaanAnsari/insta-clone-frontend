@@ -4,9 +4,12 @@ import { getAllPosts } from '../../actions/post.actions.js';
 import { Liked, Chat } from '../../svg';
 import { Modal2, ModalPostDetails } from '../../components';
 import { PostContainer, Wrapper, Img, Hover } from './styles.js';
+import Skeleton from '@material-ui/lab/Skeleton';
+import { useLocation } from 'react-router-dom';
 
 const Feed = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const post = useSelector((state) => state.post);
   const [open, setOpen] = useState(false);
   const [item, setItem] = useState({});
@@ -23,32 +26,56 @@ const Feed = () => {
     dispatch(getAllPosts());
   }, []);
 
+  const [posts, setPosts] = useState(null);
+  const [shouldRender, setShouldRender] = useState(true);
+
+  console.log(posts);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPosts(post.posts);
+    }, 2000);
+  });
+
+  const skeleton = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <Wrapper>
-      {post.posts.map((item) => (
-        <>
-          <PostContainer
-            onClick={() => {
-              setItem(item);
-              handleOpen();
-            }}
-          >
-            <Hover>
-              <div>
-                <Liked color="red" />
-                <p>{item.likes.length}</p>
-              </div>
-              <span>
-                <Chat color="white" />
-                <p>{item.comments.length}</p>
-              </span>
-            </Hover>
-            <Img>
-              <img src={item.photo} alt="" />
-            </Img>
-          </PostContainer>
-        </>
-      ))}
+      {posts === null
+        ? skeleton.map((item) => (
+            <Skeleton
+              xcx={item}
+              variant="rect"
+              width={300}
+              height={190}
+              animation="wave"
+              style={{ marginLeft: '10px', marginBottom: '10px' }}
+            />
+          ))
+        : posts?.map((item) => (
+            <>
+              <PostContainer
+                onClick={() => {
+                  setItem(item);
+                  handleOpen();
+                }}
+              >
+                <Hover>
+                  <div>
+                    <Liked color="red" />
+                    <p>{item.likes.length}</p>
+                  </div>
+                  <span>
+                    <Chat color="white" />
+                    <p>{item.comments.length}</p>
+                  </span>
+                </Hover>
+                <Img>
+                  <img src={item.photo} alt="" />
+                </Img>
+              </PostContainer>
+            </>
+          ))}
+
       <Modal2 open={open} handleClose={handleClose}>
         <ModalPostDetails item={item}></ModalPostDetails>
       </Modal2>

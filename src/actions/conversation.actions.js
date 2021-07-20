@@ -33,7 +33,7 @@ export const getConversation = (userid) => {
 
 const getMessages = (chatId) => {
   return async (dispatch) => {
-    const res = await axios.get(`/messages/${chatId}`);
+    const res = await axios.post(`/messages/${chatId}`);
 
     dispatch({ type: conversationConstants.GET_MESSAGES_REQUEST });
     if (res.status === 200) {
@@ -58,14 +58,27 @@ export const postNewMessage = (message) => {
 
 export const newConversation = (senderId, receiverId) => {
   return async (dispatch) => {
+    console.log(senderId, receiverId, 'sender receiver');
     const res = await axios.post('/conversations', { senderId, receiverId });
     console.log(res);
 
     if (res.status === 200) {
       dispatch({ type: conversationConstants.NEW_CONVERSATION });
       dispatch(getAllConversations(senderId));
+      getReceiverInfo(receiverId);
     }
   };
 };
 
-export { getMessages, getAllConversations };
+const getReceiverInfo = (id) => {
+  return async (dispatch) => {
+    const res = await axios.get(`/receiver/${id}`);
+
+    dispatch({
+      type: conversationConstants.GET_RECEIVER,
+      payload: { receiver: res.data.user },
+    });
+  };
+};
+
+export { getMessages, getAllConversations, getReceiverInfo };

@@ -31,29 +31,40 @@ const Main = () => {
       dispatch(cleanUser());
     }
 
-    // if (location.pathname === '/') {
-    //   localStorage.setItem('location', 'home');
-    // } else if (location.pathname === '/messages') {
-    //   localStorage.setItem('location', 'home');
-    // } else if (location.pathname === '/') {
-    //   localStorage.setItem('location', 'home');
-    // } else if (location.pathname === '/') {
-    //   localStorage.setItem('location', 'home');
-    // }
+    if (location.pathname === '/') {
+      localStorage.setItem('location', 'home');
+    } else if (location.pathname === '/messages') {
+      localStorage.setItem('location', 'messages');
+    } else if (location.pathname === '/feed') {
+      localStorage.setItem('location', 'feed');
+    } else if (location.pathname === '/profile') {
+      localStorage.setItem('location', 'profile');
+    }
   }, [location.pathname]);
 
   useEffect(() => {
-    if (!auth.authenticate) {
+    if (!auth?.authenticate) {
       dispatch(isUserLoggedIn());
     }
-    if (auth.authenticate) {
+    if (auth?.authenticate) {
       dispatch(getAllPosts());
       dispatch(getMyFollowingsPost());
       if (location.pathname.startsWith('/reset')) {
         history.push('/');
       }
     }
-  }, [auth.authenticate]);
+  }, [auth?.authenticate]);
+
+  var something = (function () {
+    var executed = false;
+    return function () {
+      if (!executed) {
+        executed = true;
+        window.location.reload();
+        console.log('smthng happened');
+      }
+    };
+  })();
 
   return (
     <>
@@ -64,11 +75,7 @@ const Main = () => {
         <Route path="/reset/:token" component={UpdatePassword} />
         <Layout>
           <PrivateRoute exact path="/" component={Home} />
-          <Route
-            path="/messages"
-            // component={Messages}
-            render={() => <Messages />}
-          />
+          <PrivateRoute path="/messages" component={Messages} />
 
           <PrivateRoute path="/feed" component={Feed} />
           <PrivateRoute exact path="/profile" component={Profile} />

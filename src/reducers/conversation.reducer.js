@@ -6,6 +6,7 @@ const initState = {
   loading: false,
   user: [],
   conversationId: '',
+  receiver: [],
 };
 
 export default (state = initState, action) => {
@@ -41,6 +42,12 @@ export default (state = initState, action) => {
         loading: false,
         messages: action.payload.messages,
         user: action.payload.user,
+      };
+      break;
+    case conversationConstants.GET_RECEIVER:
+      state = {
+        ...state,
+        receiver: action.payload.receiver,
       };
       break;
   }

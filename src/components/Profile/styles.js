@@ -79,7 +79,8 @@ export const Text = styled.div`
   margin-right: 18px;
   font-size: 14px;
   color: rgb(38, 38, 38);
-  font-weight: 00;
+  font-weight: 400;
+  cursor: pointer;
 `;
 
 export const Bottom = styled.div`

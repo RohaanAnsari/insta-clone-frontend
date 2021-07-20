@@ -119,4 +119,34 @@ export const unFollow = (id) => {
   };
 };
 
+export const getFollowers = (id) => {
+  return async (dispatch) => {
+    const res = await axios.get(`/get-followers/${id}`);
+
+    if (res.status === 200) {
+      console.log('followers', res.data.user.followers);
+      dispatch({
+        type: userConstants.GET_FOLLOWERS_DETAILS,
+        payload: {
+          followers: res.data.user.followers,
+        },
+      });
+    }
+  };
+};
+
+export const getFollowings = (id) => {
+  return async (dispatch) => {
+    const res = await axios.get(`/get-followings/${id}`);
+
+    if (res.status === 200) {
+      console.log('followings', res.data.user.following);
+      dispatch({
+        type: userConstants.GET_FOLLOWINGS_DETAILS,
+        payload: { followings: res.data.user.following },
+      });
+    }
+  };
+};
+
 export { getUserProfile };

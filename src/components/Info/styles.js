@@ -19,8 +19,8 @@ export const Container = styled.div`
   height: max-content;
   background-color: white;
   border-radius: 5px;
-  padding-bottom: 3rem;
   padding: 10px;
+  padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +54,9 @@ export const Box = styled.div`
 
   display: flex;
   justify-content: space-between;
+  span {
+    cursor: pointer;
+  }
 `;
 
 export const Text = styled.p`
@@ -61,4 +64,5 @@ export const Text = styled.p`
   font-size: 14px;
   color: #00000095;
   margin-right: ${({ mr }) => mr || '0px'};
+  margin-left: ${({ ml }) => ml || '0px'};
 `;

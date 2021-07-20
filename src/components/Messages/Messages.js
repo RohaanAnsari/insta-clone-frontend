@@ -126,9 +126,6 @@ const Messages = () => {
       });
     }
   };
-  useEffect(() => {
-    console.log('from useEffect', receiverId);
-  }, [receiverId]);
   return (
     <Center>
       <Wrapper>

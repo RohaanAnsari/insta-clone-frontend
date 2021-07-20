@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useHistory } from 'react-router-dom';
 import { resetPassword } from '../../actions/auth.actions';
+import { Info } from '../../components';
 import {
   Wrapper,
   TextInput,
@@ -45,6 +46,7 @@ const Reset = () => {
       }}
     >
       <Wrapper>
+        <Info />
         <Circle>
           <LockOutlinedIcon />
         </Circle>

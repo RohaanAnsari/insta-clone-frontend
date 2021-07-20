@@ -122,12 +122,14 @@ export const unFollow = (id) => {
 export const getFollowers = (id) => {
   return async (dispatch) => {
     const res = await axios.get(`/get-followers/${id}`);
+    const user = res.data.user;
 
+    let followers = user.map((e) => e.followers);
     if (res.status === 200) {
       dispatch({
         type: userConstants.GET_FOLLOWERS_DETAILS,
         payload: {
-          followers: res.data.user.followers,
+          followers: followers,
         },
       });
     }
@@ -139,10 +141,13 @@ export const getFollowings = (id) => {
     const res = await axios.get(`/get-followings/${id}`);
 
     if (res.status === 200) {
-      console.log('followings', res.data.user.following);
+      const user = res.data.user;
+
+      let followings = user.map((e) => e.following);
+
       dispatch({
         type: userConstants.GET_FOLLOWINGS_DETAILS,
-        payload: { followings: res.data.user.following },
+        payload: { followings: followings },
       });
     }
   };

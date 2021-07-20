@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { AuthComponents, Loader } from '../../components';
+import { AuthComponents, Loader, Info } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../../actions/user.actions';
 import { Redirect, useHistory } from 'react-router-dom';
@@ -62,31 +62,13 @@ const Signup = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (url) {
-  //     setBool(true);
-  //     const user = {
-  //       name,
-  //       fullName,
-  //       email,
-  //       password,
-  //       profilePicture: url,
-  //     };
-  //     dispatch(signup(user)).then(() => {
-  //       history.push('/signin');
-  //       setBool(false);
-  //       setMessage('');
-  //       user.loading = false;
-  //     });
-  //   }
-  // }, [url]);
-
   if (auth?.authenticate) {
     return <Redirect to="/" />;
   }
 
   return (
     <AuthComponents>
+      <Info />
       <Wrapper>
         <Logo>
           <img src="/images/logo.svg" alt="Instagram" />

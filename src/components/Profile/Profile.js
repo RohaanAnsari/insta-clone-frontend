@@ -187,10 +187,10 @@ const Profile = () => {
               <Text>posts</Text>
 
               <Number>{auth?.user?.followers.length}</Number>
-              <Text onClick={openFollower}>followers</Text>
+              <Text>followers</Text>
 
               <Number>{auth?.user?.following?.length}</Number>
-              <Text onClick={openFollowing}>following</Text>
+              <Text>following</Text>
             </Mid>
             <Bottom>
               <h2>{auth.user.fullName}</h2>
@@ -214,20 +214,20 @@ const Profile = () => {
           )}
         </PostsContainer>
       </Wrapper>
-      <Modal2 open={openModal} handleClose={handleCloseModal}>
+      {/* <Modal2 open={openModal} handleClose={handleCloseModal}>
         <ModalPostDetails item={item} />
-      </Modal2>
-      {user?.followers?.length > 0 && (
-        <Modal2 open={followerModal} handleClose={closeFollower}>
-          <ModalSmall details={user.followers} follower={true} />
-        </Modal2>
-      )}
+      </Modal2> */}
+      {/* {user?.followers?.length > 0 && ( */}
+      {/* <Modal2 open={followerModal} handleClose={closeFollower}>
+        <ModalSmall details={user.followers} follower={true} />
+      </Modal2> */}
+      {/* )} */}
 
-      {user?.followings?.length > 0 && (
-        <Modal2 open={followingModal} handleClose={closeFollowing}>
-          <ModalSmall details={user.followings} following={true} />
-        </Modal2>
-      )}
+      {/* {user?.followings?.length > 0 && ( */}
+      <Modal2 open={followingModal} handleClose={closeFollowing}>
+        <ModalSmall details={user.followings} following={true} />
+      </Modal2>
+      {/* )} */}
     </>
   );
 };

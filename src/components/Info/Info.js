@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import InfoIcon from '@material-ui/icons/Info';
 import ContentCopyIcon from '@material-ui/icons/ContentCopy';
-import Tooltip from '@material-ui/core/Tooltip';
 import { Modal2 } from '../../components';
 import { Wrapper, Container, Box, Label, Text } from './styles';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import ReactTooltip from 'react-tooltip';
 
 const Info = () => {
   const [open, setOpen] = useState(false);
@@ -23,10 +24,12 @@ const Info = () => {
           <h2>Demo Login Credentials for Guest Account</h2>
           <Box>
             <Label>Email :</Label>
-            <Text mr="1px"> guest@instaclone.com</Text>
+            <Text ml="10px"> guest@instaclone.com</Text>
 
             <span>
-              <ContentCopyIcon />
+              <CopyToClipboard text="guest@instaclone.com">
+                <ContentCopyIcon />
+              </CopyToClipboard>
             </span>
           </Box>
           <Box>
@@ -34,10 +37,11 @@ const Info = () => {
             <Text mr="13rem"> 123456</Text>
 
             <span>
-              <ContentCopyIcon />
+              <CopyToClipboard text="123456">
+                <ContentCopyIcon />
+              </CopyToClipboard>
             </span>
           </Box>
-          <div style={{ marginBottom: '4rem' }} />
         </Container>
       </Modal2>
     </Wrapper>

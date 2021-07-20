@@ -202,6 +202,22 @@ const Home = () => {
   return (
     <Wrapper>
       <ContentLeft>
+        {post.myFollowingsPost.length === 0 && (
+          <ZeroPost>
+            <h1>Follow some people to see their posts here</h1>
+            <span>
+              See posts from other people
+              <p
+                onClick={() => {
+                  history.push('/feed');
+                  localStorage.setItem('location', 'feed');
+                }}
+              >
+                Go to feed
+              </p>
+            </span>
+          </ZeroPost>
+        )}
         {React.Children.toArray(
           post.myFollowingsPost?.map((item) => {
             return (
@@ -280,8 +296,8 @@ const Home = () => {
                         <>
                           <Comment>
                             <div>
-                              <p>
-                                <strong>{comment.postedBy.name}</strong>{' '}
+                              <p className="postedBy">
+                                {comment.postedBy.name}
                               </p>
                               <p style={{ marginLeft: '4px' }}>
                                 {comment.text}
@@ -300,6 +316,7 @@ const Home = () => {
                                 />
                               )}
                               <p
+                                className="timeAgo"
                                 style={{
                                   color: post.deleting && '#8e8e8e45',
                                 }}
@@ -457,14 +474,32 @@ export const Message = styled.div`
 `;
 
 export const ZeroPost = styled.div`
+  margin-top: 2rem;
+  border: 4px dashed #00000080;
+
+  border-left-style: solid;
+
+  padding: 2rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: border-color 0.5s ease-in-out;
+
+  &:hover {
+    border-color: #000000;
+    border-bottom-style: dashed;
+    h2 {
+      font-weight: 600;
+    }
+  }
   h1 {
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 0.7px;
+    &:hover {
+      color: #00000075;
+    }
   }
   span {
     margin-top: 10px;

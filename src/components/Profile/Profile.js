@@ -186,10 +186,10 @@ const Profile = () => {
               <Number>{post.myPosts.length}</Number>
               <Text>posts</Text>
 
-              <Number>{auth.user.followers?.length}</Number>
+              <Number>{auth?.user?.followers.length}</Number>
               <Text onClick={openFollower}>followers</Text>
 
-              <Number>{auth.user.following?.length}</Number>
+              <Number>{auth?.user?.following?.length}</Number>
               <Text onClick={openFollowing}>following</Text>
             </Mid>
             <Bottom>
@@ -217,12 +217,17 @@ const Profile = () => {
       <Modal2 open={openModal} handleClose={handleCloseModal}>
         <ModalPostDetails item={item} />
       </Modal2>
-      <Modal2 open={followerModal} handleClose={closeFollower}>
-        <ModalSmall details={user.followers} follower={true} />
-      </Modal2>
-      <Modal2 open={followingModal} handleClose={closeFollowing}>
-        <ModalSmall details={user.followings} following={true} />
-      </Modal2>
+      {user?.followers?.length > 0 && (
+        <Modal2 open={followerModal} handleClose={closeFollower}>
+          <ModalSmall details={user.followers} follower={true} />
+        </Modal2>
+      )}
+
+      {user?.followings?.length > 0 && (
+        <Modal2 open={followingModal} handleClose={closeFollowing}>
+          <ModalSmall details={user.followings} following={true} />
+        </Modal2>
+      )}
     </>
   );
 };

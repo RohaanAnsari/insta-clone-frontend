@@ -124,7 +124,6 @@ export const getFollowers = (id) => {
     const res = await axios.get(`/get-followers/${id}`);
 
     if (res.status === 200) {
-      console.log('followers', res.data.user.followers);
       dispatch({
         type: userConstants.GET_FOLLOWERS_DETAILS,
         payload: {

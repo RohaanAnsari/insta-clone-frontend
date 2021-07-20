@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { Redirect } from 'react-router-dom';
 import { AuthComponents } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
+import InfoIcon from '@material-ui/icons/Info';
 import {
   Wrapper,
   Logo,
@@ -54,6 +55,7 @@ const Signin = () => {
 
   return (
     <AuthComponents>
+      {/* <InfoIcon /> */}
       <Wrapper>
         <Logo>
           <img src="/images/logo.svg" alt="Instagram" />

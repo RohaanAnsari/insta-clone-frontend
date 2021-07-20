@@ -27,14 +27,11 @@ const Feed = () => {
   }, []);
 
   const [posts, setPosts] = useState(null);
-  const [shouldRender, setShouldRender] = useState(true);
-
-  console.log(posts);
 
   useEffect(() => {
     setTimeout(() => {
       setPosts(post.posts);
-    }, 2000);
+    }, 3000);
   });
 
   const skeleton = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];

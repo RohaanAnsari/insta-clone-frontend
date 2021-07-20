@@ -518,6 +518,16 @@ export const Comment = styled.div`
   div {
     display: flex;
 
+    & .postedBy {
+      font-weight: bold;
+      min-width: max-content;
+      margin-right: 8px;
+    }
+
+    & .timeAgo {
+      min-width: 1rem;
+    }
+
     p {
       font-size: 12px;
       color: #262626;
@@ -525,7 +535,8 @@ export const Comment = styled.div`
       overflow-wrap: break-word;
       word-wrap: break-word;
       hyphens: auto;
-      max-width: 40rem;
+      max-width: 36rem;
+      /* min-width: max-content; */
     }
   }
 

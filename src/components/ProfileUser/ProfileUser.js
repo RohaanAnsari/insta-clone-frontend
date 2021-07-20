@@ -99,10 +99,7 @@ const ProfileUser = () => {
               </Mid>
               <Bottom>
                 <h2>{user.user?.fullName}</h2>
-                <p>
-                  You ain't know my level even if we on the same building on the
-                  same floor.
-                </p>
+                <p>{user.user?.bio}</p>
               </Bottom>
             </UserDetails>
           </Header>

@@ -18,3 +18,4 @@ export { default as Searchbar } from './Searchbar/index';
 export { default as Reset } from './Reset/Reset';
 export { default as UpdatePassword } from './UpdatePassword/UpdatePassword';
 export { default as ModalSmall } from './ModalSmall/ModalSmall';
+export { default as Info } from './Info/Info';

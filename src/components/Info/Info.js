@@ -4,7 +4,6 @@ import ContentCopyIcon from '@material-ui/icons/ContentCopy';
 import { Modal2 } from '../../components';
 import { Wrapper, Container, Box, Label, Text } from './styles';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import ReactTooltip from 'react-tooltip';
 
 const Info = () => {
   const [open, setOpen] = useState(false);

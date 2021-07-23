@@ -214,9 +214,9 @@ const Profile = () => {
           )}
         </PostsContainer>
       </Wrapper>
-      {/* <Modal2 open={openModal} handleClose={handleCloseModal}>
+      <Modal2 open={openModal} handleClose={handleCloseModal}>
         <ModalPostDetails item={item} />
-      </Modal2> */}
+      </Modal2>
       {/* {user?.followers?.length > 0 && ( */}
       {/* <Modal2 open={followerModal} handleClose={closeFollower}>
         <ModalSmall details={user.followers} follower={true} />

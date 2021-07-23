@@ -224,9 +224,9 @@ const Profile = () => {
       {/* )} */}
 
       {/* {user?.followings?.length > 0 && ( */}
-      <Modal2 open={followingModal} handleClose={closeFollowing}>
+      {/* <Modal2 open={followingModal} handleClose={closeFollowing}>
         <ModalSmall details={user.followings} following={true} />
-      </Modal2>
+      </Modal2> */}
       {/* )} */}
     </>
   );

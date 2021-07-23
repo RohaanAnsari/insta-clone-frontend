@@ -120,6 +120,7 @@ export const Post = styled.div`
   max-height: 293px;
   height: 293px;
   background: #fff;
+  cursor: pointer !important;
 
   &:hover {
     filter: brightness(60%);

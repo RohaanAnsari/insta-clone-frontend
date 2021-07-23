@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   background: black;
   width: 100rem;
+  cursor: pointer;
 `;
 
 export const LeftContainer = styled.div`

@@ -140,12 +140,12 @@ const Messages = () => {
   };
 
   const conversationDelete = () => {
-    console.log('....');
     console.log('ConversationId', conversation.conversationId);
     dispatch(
       deleteConversation(conversation.conversationId, auth.user._id)
     ).then(() => {
-      // getAllConversations();
+      // getAllConversations(auth.user._id);
+      window.location.reload();
     });
   };
 

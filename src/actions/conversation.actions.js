@@ -85,7 +85,7 @@ export const deleteConversation = (id, userid) => {
     const res = await axios.delete(`/conversation/${id}`);
 
     if (res.status === 200) {
-      console.log(res.data.conversation);
+      console.log(res.data);
       dispatch({
         type: conversationConstants.DELETE_CONVERSATION,
         payload: { id: res.data.conversation },

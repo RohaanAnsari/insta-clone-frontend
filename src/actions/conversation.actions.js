@@ -60,7 +60,6 @@ export const newConversation = (senderId, receiverId) => {
   return async (dispatch) => {
     console.log(senderId, receiverId, 'sender receiver');
     const res = await axios.post('/conversations', { senderId, receiverId });
-    console.log(res);
 
     if (res.status === 200) {
       dispatch({ type: conversationConstants.NEW_CONVERSATION });
@@ -78,6 +77,20 @@ const getReceiverInfo = (id) => {
       type: conversationConstants.GET_RECEIVER,
       payload: { receiver: res.data.user },
     });
+  };
+};
+
+export const deleteConversation = (id, userid) => {
+  return async (dispatch) => {
+    const res = await axios.delete(`/conversation/${id}`);
+
+    if (res.status === 200) {
+      console.log(res.data.conversation);
+      dispatch({
+        type: conversationConstants.DELETE_CONVERSATION,
+        payload: { id: res.data.conversation },
+      });
+    }
   };
 };
 

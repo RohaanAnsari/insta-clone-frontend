@@ -50,6 +50,12 @@ export default (state = initState, action) => {
         receiver: action.payload.receiver,
       };
       break;
+    case conversationConstants.DELETE_CONVERSATION:
+      state = {
+        ...state,
+        chats: state.chats.filter((chat) => chat._id !== action.payload.id),
+      };
+      break;
   }
   return state;
 };

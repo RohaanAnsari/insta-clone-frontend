@@ -8,6 +8,7 @@ import { io } from 'socket.io-client';
 import moment from 'moment';
 import Head from './Head';
 import {
+  deleteConversation,
   getMessages,
   getReceiverInfo,
   postNewMessage,
@@ -76,7 +77,6 @@ const Messages = () => {
 
   useEffect(() => {
     arrivalMessage && dispatch(getMessages(conversation.conversationId));
-    console.log(arrivalMessage);
   }, [arrivalMessage]);
 
   useEffect(() => {
@@ -138,6 +138,17 @@ const Messages = () => {
   const closePopOver = () => {
     setAnchorEl(null);
   };
+
+  const conversationDelete = () => {
+    console.log('....');
+    console.log('ConversationId', conversation.conversationId);
+    dispatch(
+      deleteConversation(conversation.conversationId, auth.user._id)
+    ).then(() => {
+      // getAllConversations();
+    });
+  };
+
   return (
     <Center>
       <Wrapper>
@@ -145,7 +156,7 @@ const Messages = () => {
           <Head />
           <ChatSection>
             <Popover anchorEl={anchorEl} handleClose={closePopOver}>
-              <Delete>
+              <Delete onClick={() => conversationDelete()}>
                 <p>Delete</p>
                 <span>
                   <DeleteOutlineOutlinedIcon />

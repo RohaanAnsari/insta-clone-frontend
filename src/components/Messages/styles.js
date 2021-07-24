@@ -392,7 +392,7 @@ export const Delete = styled.div`
   align-items: center;
   justify-content: center;
   padding: 7px;
-  transition: background-color 0.9s linear;
+  transition: background-color 0.5s linear;
   cursor: pointer;
 
   &:hover {
@@ -414,7 +414,7 @@ export const Delete = styled.div`
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
-    transition: color 0.9s linear;
+    transition: color 0.5s linear;
   }
 
   span {
@@ -422,7 +422,7 @@ export const Delete = styled.div`
       margin-top: 2px;
       font-size: 16px;
       fill: #000000;
-      transition: fill 0.9s linear;
+      transition: fill 0.5s linear;
     }
   }
 `;

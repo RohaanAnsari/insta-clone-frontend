@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-
-import KeyboardArrowDownSharpIcon from '@material-ui/icons/KeyboardArrowDownSharp';
-import { NewChat, Share } from '../../svg';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Share } from '../../svg';
 import Avatar from '@material-ui/core/Avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfo } from '../../actions/user.actions';
@@ -15,6 +14,8 @@ import {
 } from '../../actions/conversation.actions';
 import ReactScrollableFeed from 'react-scrollable-feed';
 import { Attachment, Emoji, Like } from '../../svg';
+import { Popover } from '../../components';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 import {
   Center,
@@ -35,6 +36,8 @@ import {
   Upper,
   Icon,
   Message,
+  Button,
+  Delete,
 } from './styles';
 import {
   getAllConversations,
@@ -51,12 +54,12 @@ const Messages = () => {
   const conversation = useSelector((state) => state.conversation);
   const [receiverId, setReceiverId] = useState('');
 
-  const [arrivalMessage, setArrivalMessage] = useState(null);
-
   const scrollRef = useRef();
   const socket = useRef();
 
+  const [arrivalMessage, setArrivalMessage] = useState(null);
   const [currentChat, setCurrentChat] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
     if (location.pathname === '/messages') {
@@ -126,12 +129,29 @@ const Messages = () => {
       });
     }
   };
+
+  const openPopOver = (event, user) => {
+    setCurrentChat(user);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const closePopOver = () => {
+    setAnchorEl(null);
+  };
   return (
     <Center>
       <Wrapper>
         <ContainerLeft>
           <Head />
           <ChatSection>
+            <Popover anchorEl={anchorEl} handleClose={closePopOver}>
+              <Delete>
+                <p>Delete</p>
+                <span>
+                  <DeleteOutlineOutlinedIcon />
+                </span>
+              </Delete>
+            </Popover>
             {user.userChats.map((user) => {
               return (
                 <Chat
@@ -149,7 +169,9 @@ const Messages = () => {
                       </NewMessage>
                     </span>
                   </div>
-                  {/* <Dot /> */}
+                  <Button onClick={(event) => openPopOver(event, user)}>
+                    <MoreVertIcon />
+                  </Button>
                 </Chat>
               );
             })}

@@ -372,3 +372,57 @@ export const Message = styled.div`
     font-size: 9px;
   }
 `;
+
+export const Button = styled.button`
+  background: transparent;
+  border: none;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  & .MuiSvgIcon-root {
+    font-size: 22px;
+  }
+`;
+
+export const Delete = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  transition: background-color 0.9s linear;
+  cursor: pointer;
+
+  &:hover {
+    /* background-color: #ff4c4c; */
+
+    p {
+      color: #ed4956;
+    }
+
+    span {
+      & .MuiSvgIcon-root {
+        fill: #ed4956;
+      }
+    }
+  }
+
+  p {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    transition: color 0.9s linear;
+  }
+
+  span {
+    & .MuiSvgIcon-root {
+      margin-top: 2px;
+      font-size: 16px;
+      fill: #000000;
+      transition: fill 0.9s linear;
+    }
+  }
+`;

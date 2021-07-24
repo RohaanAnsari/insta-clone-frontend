@@ -123,13 +123,15 @@ export const getFollowers = (id) => {
   return async (dispatch) => {
     const res = await axios.get(`/get-followers/${id}`);
     const user = res.data.user;
-
+    // console.log('user', res.data);
     let followers = user.map((e) => e.followers);
+    var merged = [].concat.apply([], followers);
+    // console.log(merged);
     if (res.status === 200) {
       dispatch({
         type: userConstants.GET_FOLLOWERS_DETAILS,
         payload: {
-          followers: followers,
+          followers: merged,
         },
       });
     }
@@ -145,9 +147,13 @@ export const getFollowings = (id) => {
 
       let followings = user.map((e) => e.following);
 
+      var merged = [].concat.apply([], followings);
+
+      console.log('Followings merged', merged);
+
       dispatch({
         type: userConstants.GET_FOLLOWINGS_DETAILS,
-        payload: { followings: followings },
+        payload: { followings: merged },
       });
     }
   };

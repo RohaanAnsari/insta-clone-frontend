@@ -18,7 +18,7 @@ const getAllPosts = () => {
 export const getMyPost = () => {
   return async (dispatch) => {
     const res = await axios.get('/mypost');
-    // console.log('res after mypost', res);
+    //  console.log('res after mypost', res);
     if (res.status === 200) {
       const { mypost } = res.data;
       dispatch({

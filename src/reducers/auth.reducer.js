@@ -11,7 +11,10 @@ const initState = {
     profilePicture: '',
     followers: [],
     following: [],
+    savedPosts: [],
   },
+  savedPostDetails: [],
+  saving: false,
   authenticate: false,
   authenticating: false,
   loading: false,
@@ -55,11 +58,6 @@ export default (state = initState, action) => {
       };
       break;
     case authConstants.LOGOUT_SUCCESS:
-      // state = {
-      //   token: null,
-      //   user: undefined,
-      //   authenticate: false,
-      // };
       state = null;
       break;
     case authConstants.UPDATE_FOLLOWINGS:
@@ -79,21 +77,55 @@ export default (state = initState, action) => {
         ...state,
         resetMessage: action.payload.message,
       };
+      break;
     case authConstants.RESET_PASSWORD_FAILURE:
       state = {
         ...state,
         resetError: action.payload.error,
       };
+      break;
     case authConstants.UPDATE_PASSWORD_SUCCESS:
       state = {
         ...state,
         updatePasswordMsg: action.payload.message,
       };
+      break;
     case authConstants.UPDATE_PASSWORD_FAILURE:
       state = {
         ...state,
         updatePasswordError: action.payload.error,
       };
+      break;
+    case authConstants.GET_SAVED_POSTS:
+      state = {
+        ...state,
+        savedPostDetails: action.payload.posts,
+      };
+      break;
+    case authConstants.SAVE_POST_REQUEST:
+      state = {
+        ...state,
+        saving: true,
+      };
+      break;
+    case authConstants.SAVE_POST_SUCCESS:
+      state = {
+        ...state,
+        saving: false,
+      };
+      break;
+    case authConstants.UNSAVE_POST_REQUEST:
+      state = {
+        ...state,
+        saving: true,
+      };
+      break;
+    case authConstants.UNSAVE_POST_SUCCESS:
+      state = {
+        ...state,
+        saving: false,
+      };
+      break;
   }
   return state;
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
-import { Like, Liked, Chat, Save, Share, Emoji } from '../../svg';
+import { Like, Liked, Chat, Save, Share, Emoji, Saved } from '../../svg';
 import { CustomModal } from '../../components';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {
@@ -31,7 +31,7 @@ import {
   ViewComments,
 } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { signout } from '../../actions/auth.actions';
+import { savePost, signout, unsavePost } from '../../actions/auth.actions';
 import {
   createPost,
   likePost,
@@ -181,24 +181,8 @@ const Home = () => {
     }
   }, [url]);
 
-  // if (post.myFollowingsPost.length === 0) {
-  //   return (
-  //     <ZeroPost>
-  //       <h1>Follow some people to see their posts here</h1>
-  //       <span>
-  //         See posts from other people
-  //         <p
-  //           onClick={() => {
-  //             history.push('/feed');
-  //             localStorage.setItem('location', 'feed');
-  //           }}
-  //         >
-  //           Go to feed
-  //         </p>
-  //       </span>
-  //     </ZeroPost>
-  //   );
-  // }
+  const savedPosts = localStorage.getItem('ids');
+
   return (
     <Wrapper>
       <ContentLeft>
@@ -275,9 +259,27 @@ const Home = () => {
                     </Button>
                   </BtnsLeft>
                   <BtnsRight>
-                    <Button marginRight="0">
-                      <Save />
-                    </Button>
+                    {savedPosts.includes(item._id) ? (
+                      <Button
+                        marginRight="0"
+                        onClick={() => {
+                          console.log('item', item._id);
+                          dispatch(unsavePost(item._id));
+                        }}
+                      >
+                        <Saved />
+                      </Button>
+                    ) : (
+                      <Button
+                        marginRight="0"
+                        onClick={() => {
+                          console.log('item', item._id);
+                          dispatch(savePost(item._id));
+                        }}
+                      >
+                        <Save />
+                      </Button>
+                    )}
                   </BtnsRight>
                 </Buttons>
                 {item.likes.length === 1 && <LikesNumber> 1 Like</LikesNumber>}
@@ -288,48 +290,50 @@ const Home = () => {
                 {item.comments.length > 1 && (
                   <ViewComments>View all comments</ViewComments>
                 )}
-                <CommentDetails forceScroll="true">
-                  <ReactScrollableFeed className="scrollable-div">
-                    {item.comments.map((comment) => {
-                      let date = new Date(comment.createdAt);
-                      return (
-                        <>
-                          <Comment>
-                            <div>
-                              <p className="postedBy">
-                                {comment.postedBy.name}
-                              </p>
-                              <p style={{ marginLeft: '4px' }}>
-                                {comment.text}
-                              </p>
-                            </div>
-                            <span>
-                              {comment.postedBy._id === auth.user._id && (
-                                <DeleteIcon
+                {React.Children.toArray(
+                  <CommentDetails forceScroll="true">
+                    <ReactScrollableFeed className="scrollable-div">
+                      {item.comments.map((comment) => {
+                        let date = new Date(comment.createdAt);
+                        return (
+                          <>
+                            <Comment>
+                              <div>
+                                <p className="postedBy">
+                                  {comment.postedBy.name}
+                                </p>
+                                <p style={{ marginLeft: '4px' }}>
+                                  {comment.text}
+                                </p>
+                              </div>
+                              <span>
+                                {comment.postedBy._id === auth.user._id && (
+                                  <DeleteIcon
+                                    style={{
+                                      cursor: 'pointer',
+                                      marginBottom: '4px',
+                                    }}
+                                    onClick={(e) =>
+                                      commentDelete(e, item._id, comment._id)
+                                    }
+                                  />
+                                )}
+                                <p
+                                  className="timeAgo"
                                   style={{
-                                    cursor: 'pointer',
-                                    marginBottom: '4px',
+                                    color: post.deleting && '#8e8e8e45',
                                   }}
-                                  onClick={(e) =>
-                                    commentDelete(e, item._id, comment._id)
-                                  }
-                                />
-                              )}
-                              <p
-                                className="timeAgo"
-                                style={{
-                                  color: post.deleting && '#8e8e8e45',
-                                }}
-                              >
-                                {moment(date).startOf('seconds').fromNow()}
-                              </p>
-                            </span>
-                          </Comment>
-                        </>
-                      );
-                    })}
-                  </ReactScrollableFeed>
-                </CommentDetails>
+                                >
+                                  {moment(date).startOf('seconds').fromNow()}
+                                </p>
+                              </span>
+                            </Comment>
+                          </>
+                        );
+                      })}
+                    </ReactScrollableFeed>
+                  </CommentDetails>
+                )}
                 <CommentSection>
                   <div>
                     <Button>

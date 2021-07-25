@@ -32,9 +32,11 @@ import {
 import { getFollowers, getFollowings } from '../../actions/user.actions';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { IGTV, Posts, Save, Tagged } from '../../svg';
+import { useHistory } from 'react-router-dom';
 
 const Profile = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user);
   const post = useSelector((state) => state.post);
@@ -218,7 +220,11 @@ const Profile = () => {
                       </div>
                     </Content>
                     <Content>
-                      <div>
+                      <div
+                        onClick={() => {
+                          history.push('/savedpost');
+                        }}
+                      >
                         <Save fill="#8e8e8e" />
                         <p>Saved Posts</p>
                       </div>
@@ -226,14 +232,13 @@ const Profile = () => {
                     <Content>
                       <div>
                         <IGTV height="26px" width="26px" />
-
                         <p>IGTV </p>
                       </div>
                     </Content>
                     <Content>
                       <div>
                         <Tagged height="26px" width="26px" />
-                        <p>Tagged </p>
+                        <p>Tagged</p>
                       </div>
                     </Content>
                   </Container>

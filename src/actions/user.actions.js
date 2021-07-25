@@ -65,7 +65,7 @@ export const getUserInfo = (id) => {
 export const getAllUsers = () => {
   return async (dispatch) => {
     const res = await axios.get('/getallusers');
-    console.log(res, 'res after get all users');
+    //  console.log(res, 'res after get all users');
     if (res.status === 200) {
       dispatch({
         type: userConstants.GET_ALL_USERS,

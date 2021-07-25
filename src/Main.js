@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { isUserLoggedIn } from './actions/auth.actions';
+import { getSavedPosts, isUserLoggedIn } from './actions/auth.actions';
 import { getAllPosts, getMyFollowingsPost } from './actions/post.actions';
 import { cleanUser } from './actions/user.actions';
 
@@ -17,6 +17,7 @@ import {
   ProfileUser,
   Reset,
   UpdatePassword,
+  SavedPost,
 } from './components';
 
 const Main = () => {
@@ -24,6 +25,7 @@ const Main = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const auth = useSelector((state) => state.auth);
+  let ids = JSON.parse(localStorage.getItem('ids'));
 
   useEffect(() => {
     if (location.pathname === '/') {
@@ -39,8 +41,17 @@ const Main = () => {
       localStorage.setItem('location', 'feed');
     } else if (location.pathname === '/profile') {
       localStorage.setItem('location', 'profile');
+    } else if (location.pathname === '/profile/feed') {
+      localStorage.setItem('location', 'feed');
+      history.push('/feed');
     }
-  }, [location.pathname]);
+
+    if (location.pathname === '/savedpost') {
+      ids = JSON.parse(localStorage.getItem('ids'));
+      console.log(ids);
+      dispatch(getSavedPosts(ids));
+    }
+  }, [location.pathname, ids?.length]);
 
   useEffect(() => {
     if (!auth?.authenticate) {
@@ -55,17 +66,6 @@ const Main = () => {
     }
   }, [auth?.authenticate]);
 
-  var something = (function () {
-    var executed = false;
-    return function () {
-      if (!executed) {
-        executed = true;
-        window.location.reload();
-        console.log('smthng happened');
-      }
-    };
-  })();
-
   return (
     <>
       <Switch>
@@ -75,9 +75,9 @@ const Main = () => {
         <Route path="/reset/:token" component={UpdatePassword} />
         <Layout>
           <PrivateRoute exact path="/" component={Home} />
-          <PrivateRoute path="/messages" component={Messages} />
-
-          <PrivateRoute path="/feed" component={Feed} />
+          <PrivateRoute exact path="/messages" component={Messages} />
+          <PrivateRoute exact path="/savedpost" component={SavedPost} />
+          <PrivateRoute exact path="/feed" component={Feed} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/profile/:userid" component={ProfileUser} />
         </Layout>

@@ -17,3 +17,4 @@ export { default as NewChat } from './NewChat';
 export { default as Posts } from './Posts';
 export { default as IGTV } from './IGTV';
 export { default as Tagged } from './Tagged';
+export { default as Saved } from './Saved';

@@ -54,6 +54,7 @@ export const PostContainer = styled.div`
   padding-bottom: 10px !important;
   overflow: hidden;
   margin-left: 10px;
+  /* background-color: red; */
 
   &:hover {
     filter: brightness(92%);
@@ -70,6 +71,7 @@ export const Img = styled.div`
   max-height: 400px;
   img {
     width: 100%;
-    object-fit: contain;
+    height: 20rem;
+    object-fit: cover;
   }
 `;

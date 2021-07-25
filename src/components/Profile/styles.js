@@ -243,6 +243,7 @@ export const Content = styled.div`
 
   div {
     display: flex;
+    align-items: center;
 
     p {
       font-size: 14px;

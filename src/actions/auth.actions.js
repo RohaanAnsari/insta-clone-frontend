@@ -16,6 +16,7 @@ export const login = (user) => {
       const { token, user } = res.data;
       localStorage.setItem('jwt', token);
       localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('ids', JSON.stringify(user.savedPosts));
       dispatch({
         type: authConstants.LOGIN_SUCCESS,
         payload: {
@@ -138,6 +139,61 @@ export const updatePassword = (password, token) => {
           payload: { error: res.data.error },
         });
       }
+    }
+  };
+};
+
+export const getSavedPosts = (ids) => {
+  return async (dispatch) => {
+    //  let x = JSON.parse(localStorage.getItem('ids'));
+    const res = await axios.post('/get-savedposts', { ids });
+    console.log('details from saved', res);
+    if (res.status === 200) {
+      localStorage.setItem('savedPosts', JSON.stringify(res.data));
+      dispatch({
+        type: authConstants.GET_SAVED_POSTS,
+        payload: {
+          posts: res.data,
+        },
+      });
+    }
+  };
+};
+
+export const savePost = (id) => {
+  return async (dispatch) => {
+    const res = await axios.post('/savepost', { id });
+    console.log(res.data);
+    dispatch({ type: authConstants.SAVE_POST_REQUEST });
+
+    if (res.status === 200) {
+      localStorage.setItem('ids', JSON.stringify(res.data));
+      dispatch({
+        type: authConstants.SAVE_POST_SUCCESS,
+        payload: {
+          id: res.data,
+        },
+      });
+    }
+  };
+};
+
+export const unsavePost = (id) => {
+  return async (dispatch) => {
+    const res = await axios.post('/unsavepost', { id });
+    console.log('unsaved', res.data);
+
+    if (res.status === 200) {
+      if (res.data.length === 0) {
+        localStorage.setItem('savedPosts', null);
+      }
+      localStorage.setItem('ids', JSON.stringify(res.data));
+      dispatch({
+        type: authConstants.UNSAVE_POST_SUCCESS,
+        payload: {
+          id: res.data,
+        },
+      });
     }
   };
 };

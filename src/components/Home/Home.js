@@ -242,7 +242,7 @@ const Home = () => {
                   <BtnsLeft>
                     {post.liking ? (
                       <Loader2 />
-                    ) : item.likes.includes(auth.user._id) ? (
+                    ) : item.likes?.includes(auth.user._id) ? (
                       <Button onClick={() => unLike(item._id)}>
                         <Liked />
                       </Button>
@@ -259,7 +259,7 @@ const Home = () => {
                     </Button>
                   </BtnsLeft>
                   <BtnsRight>
-                    {savedPosts.includes(item._id) ? (
+                    {savedPosts?.includes(item._id) ? (
                       <Button
                         marginRight="0"
                         onClick={() => {

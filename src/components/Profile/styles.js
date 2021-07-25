@@ -34,29 +34,44 @@ export const UserDetails = styled.div`
 
 export const Top = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 106%;
 
-  h1 {
-    font-size: 28px;
-    font-weight: 300;
-    line-height: 32px;
-    color: #555555;
+  div {
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 32px;
+      color: #555555;
+    }
+
+    button {
+      margin-left: 15px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18px;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+      height: 30px;
+      width: max-content;
+      letter-spacing: 0.5px;
+      padding: 5px 9px;
+      cursor: pointer;
+      background: transparent;
+      &:active {
+        background-color: #dbdbdb;
+      }
+    }
   }
 
-  button {
-    margin-left: 15px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    border: 1px solid #dbdbdb;
-    border-radius: 4px;
-    height: 30px;
-    width: max-content;
-    letter-spacing: 0.5px;
-    padding: 5px 9px;
+  span {
     cursor: pointer;
-    background: transparent;
-    &:active {
-      background-color: #dbdbdb;
+    & .MuiSvgIcon-root {
+      font-size: 25px;
     }
   }
 `;
@@ -202,6 +217,39 @@ export const UpdateModal = styled.div`
       margin-left: 38px;
       font-weight: 600;
       cursor: pointer;
+    }
+  }
+`;
+
+export const Container = styled.div`
+  height: max-content;
+  width: 250px;
+`;
+
+export const Content = styled.div`
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.5s linear;
+
+  &:hover {
+    background-color: #ecf3f9;
+
+    div {
+      p {
+        color: black;
+      }
+    }
+  }
+
+  div {
+    display: flex;
+
+    p {
+      font-size: 14px;
+      font-weight: 600;
+      margin-left: 10px;
+      color: #8e8e8e;
+      transition: color 0.5s linear;
     }
   }
 `;

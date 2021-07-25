@@ -13,6 +13,8 @@ import {
   PostsContainer,
   Post,
   UpdateModal,
+  Container,
+  Content,
 } from './styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMyPost } from '../../actions/post.actions';
@@ -21,9 +23,15 @@ import {
   updateProfilePicture,
   updateBio,
 } from '../../actions/auth.actions';
-import { Modal2, ModalPostDetails, ModalSmall } from '../../components';
-
+import {
+  Modal2,
+  ModalPostDetails,
+  ModalSmall,
+  Popover,
+} from '../../components';
 import { getFollowers, getFollowings } from '../../actions/user.actions';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { IGTV, Posts, Save, Tagged } from '../../svg';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -41,6 +49,7 @@ const Profile = () => {
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
   const [bool, setBool] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -103,6 +112,14 @@ const Profile = () => {
 
   const bioUpdate = (bio) => {
     dispatch(updateBio(bio));
+  };
+
+  const openPopOver = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const closePopOver = () => {
+    setAnchorEl(null);
   };
 
   useEffect(() => {
@@ -178,9 +195,50 @@ const Profile = () => {
           <ProfilePicture src={auth.user.profilePicture} alt="" />
           <UserDetails>
             <Top>
-              <h1>{auth.user.name}</h1>
-              <button onClick={handleOpen}>Edit Profile</button>
-              <button onClick={() => dispatch(signout())}>Signout</button>
+              <div>
+                <h1>{auth.user.name}</h1>
+                <button onClick={handleOpen}>Edit Profile</button>
+                <button onClick={() => dispatch(signout())}>Signout</button>
+              </div>
+              <span>
+                <span onClick={openPopOver}>
+                  <MoreVertIcon />
+                </span>
+                <Popover
+                  transformVO="top"
+                  anchorVO="top"
+                  anchorEl={anchorEl}
+                  handleClose={closePopOver}
+                >
+                  <Container>
+                    <Content>
+                      <div>
+                        <Posts height="24px" width="24px" />
+                        <p>Posts </p>
+                      </div>
+                    </Content>
+                    <Content>
+                      <div>
+                        <Save fill="#8e8e8e" />
+                        <p>Saved Posts</p>
+                      </div>
+                    </Content>
+                    <Content>
+                      <div>
+                        <IGTV height="26px" width="26px" />
+
+                        <p>IGTV </p>
+                      </div>
+                    </Content>
+                    <Content>
+                      <div>
+                        <Tagged height="26px" width="26px" />
+                        <p>Tagged </p>
+                      </div>
+                    </Content>
+                  </Container>
+                </Popover>
+              </span>
             </Top>
             <Mid>
               <Number>{post.myPosts.length}</Number>

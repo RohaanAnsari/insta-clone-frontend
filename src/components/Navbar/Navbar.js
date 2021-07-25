@@ -9,6 +9,7 @@ import {
   ChatUnActive,
   FeedActive,
   FeedUnActive,
+  Save,
 } from '../../svg';
 import {
   Wrapper,
@@ -83,13 +84,13 @@ const Navbar = () => {
                 <FavIconActive />
               ) : (
                 <Link to="/activity">
-                  <FavIconUnActive
+                  <Save
                     onClick={() => localStorage.setItem('location', 'activity')}
                   />
                 </Link>
               )}
             </div> */}
-            {/* <div style={{ background: 'red' }}> */}
+
             <div>
               {localStorage.getItem('location') === 'profile' ? (
                 <ProfileActive />

@@ -14,3 +14,6 @@ export { default as NewMessage } from './NewMessage';
 export { default as ArrowDown } from './ArrowDown';
 export { default as Attachment } from './Attachment';
 export { default as NewChat } from './NewChat';
+export { default as Posts } from './Posts';
+export { default as IGTV } from './IGTV';
+export { default as Tagged } from './Tagged';

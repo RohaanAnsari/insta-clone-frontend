@@ -10,7 +10,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimplePopover({ anchorEl, handleClose, children }) {
+export default function SimplePopover({
+  anchorEl,
+  handleClose,
+  children,
+  anchorVO,
+  transformVO,
+  anchorHO,
+  transformHO,
+}) {
   const classes = useStyles();
 
   const open = Boolean(anchorEl);
@@ -24,12 +32,12 @@ export default function SimplePopover({ anchorEl, handleClose, children }) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'center',
+          vertical: anchorVO ? anchorVO : 'center',
+          horizontal: anchorHO ? anchorHO : 'center',
         }}
         transformOrigin={{
-          vertical: 'center',
-          horizontal: 'center',
+          vertical: transformVO ? transformVO : 'center',
+          horizontal: transformHO ? transformHO : 'center',
         }}
       >
         {children}

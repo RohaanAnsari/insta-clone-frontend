@@ -144,7 +144,6 @@ const Messages = () => {
     dispatch(
       deleteConversation(conversation.conversationId, auth.user._id)
     ).then(() => {
-      // getAllConversations(auth.user._id);
       window.location.reload();
     });
   };

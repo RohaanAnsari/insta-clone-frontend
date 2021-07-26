@@ -193,13 +193,13 @@ export const Post = styled.div`
   width: 100%;
   background: #ffffff;
   height: max-content;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   border: 1px solid #dbdbdb;
   /* border: 1px solid black; */
   header {
     display: flex;
     justify-content: space-between;
-    padding: 8px 15px 7px;
+    padding: 8px 10px 7px;
     display: flex;
     align-items: center;
 
@@ -223,9 +223,9 @@ export const Title = styled.div`
   p {
     margin-top: 5px;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
   }
 `;
 
@@ -248,25 +248,25 @@ export const PostedBy = styled(Link)`
 
 export const Icon = styled.div`
   & .MuiSvgIcon-root {
-    font-size: 30px;
+    font-size: 20px;
     cursor: pointer;
   }
 `;
 
 export const Img = styled.div`
   height: 400px;
-  max-height: 400px;
+  max-height: 500px;
   img {
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 `;
 
 export const Caption = styled.div`
   font-size: 15px;
-  font-weight: 500;
-  padding: 5px 15px;
+  font-weight: 700;
+  padding: 5px 10px;
   margin-left: 5px;
 `;
 
@@ -275,7 +275,7 @@ export const Buttons = styled.section`
   /* background: lightpink; */
   display: flex;
   justify-content: space-between;
-  padding: 5px 20px;
+  padding: 5px 15px;
 `;
 
 export const BtnsLeft = styled.div`
@@ -536,7 +536,6 @@ export const Comment = styled.div`
       word-wrap: break-word;
       hyphens: auto;
       max-width: 36rem;
-      /* min-width: max-content; */
     }
   }
 

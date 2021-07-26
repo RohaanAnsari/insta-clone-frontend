@@ -5,10 +5,8 @@ import styled from 'styled-components';
 import { Liked, Chat } from '../../svg';
 import { Modal2, ModalPostDetails } from '../../components';
 import { PostContainer, Wrapper, Img, Hover } from '../Feed/styles';
-import Skeleton from '@material-ui/lab/Skeleton';
 
 const SavedPost = () => {
-  const auth = useSelector((state) => state.auth);
   const [open, setOpen] = useState(false);
   const [item, setItem] = useState({});
   const [posts, setPosts] = useState(null);
@@ -20,9 +18,6 @@ const SavedPost = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  useEffect(() => {
-    //  window.location.reload();
-  }, []);
 
   useEffect(() => {
     setPosts(JSON.parse(localStorage.getItem('savedPosts')));
@@ -32,7 +27,6 @@ const SavedPost = () => {
     <Wrapper>
       {posts === null && <Note>Saved posts will appear here</Note>}
       {React.Children.toArray(
-        //   !posts !== null &&
         posts?.map((item) => {
           return (
             <>

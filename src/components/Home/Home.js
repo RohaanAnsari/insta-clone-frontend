@@ -4,6 +4,8 @@ import Avatar from '@material-ui/core/Avatar';
 import { Like, Liked, Chat, Save, Share, Emoji, Saved } from '../../svg';
 import { CustomModal } from '../../components';
 import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import {
   Wrapper,
   ContentLeft,
@@ -48,6 +50,12 @@ import { useHistory } from 'react-router-dom';
 import { getAllUsers, getUserProfile } from '../../actions/user.actions';
 import ReactScrollableFeed from 'react-scrollable-feed';
 import moment from 'moment';
+import Modal2 from '../Modal2';
+import ModalPostDetails from '../ModalPostDetails';
+import SimplePopover from '../Popover/Popover';
+import { Delete } from '../Messages/styles';
+import { Modal } from '@material-ui/core';
+import ModalDetails from '../ModalDetails/ModalDetails';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -64,6 +72,18 @@ const Home = () => {
   const [error, setError] = useState(post.createPostError);
   const [message, setMessage] = useState('');
   const [bool, setBool] = useState(post.creating);
+
+  const [openModal, setOpenModal] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [viewCommentsModal, setViewCommentsModal] = useState({});
+  const [item, setItem] = useState({});
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -125,6 +145,12 @@ const Home = () => {
   };
 
   const postComment = (e, cmnt, postId) => {
+    if (cmnt === '') {
+      return;
+    }
+    if (!cmnt.replace(/\s/g, '')) {
+      return;
+    }
     const Comment = {
       text: cmnt,
       postId,
@@ -135,15 +161,18 @@ const Home = () => {
     return;
   };
 
-  const postDelete = (e, id) => {
-    e.preventDefault();
-    dispatch(deletePost(id));
-  };
-
   const commentDelete = (e, postId, commentId) => {
     e.preventDefault();
     dispatch(deleteComment(postId, commentId));
     console.log(postId, commentId);
+  };
+
+  const openDeleteModal = () => {
+    setOpenDelete(true);
+  };
+
+  const closeDeleteModal = () => {
+    setOpenDelete(false);
   };
 
   useEffect(() => {
@@ -185,6 +214,9 @@ const Home = () => {
 
   return (
     <Wrapper>
+      <Modal2 zoom={true} open={openDelete} handleClose={closeDeleteModal}>
+        <ModalDetails close={setOpenDelete} data={item} />
+      </Modal2>
       <ContentLeft>
         {post.myFollowingsPost.length === 0 && (
           <ZeroPost>
@@ -230,10 +262,17 @@ const Home = () => {
                       <p>{item.title}</p>
                     </Title>
                   </div>
-                  <Icon onClick={(e) => postDelete(e, item._id)}>
-                    {item.postedBy._id === auth.user._id && <DeleteIcon />}
+
+                  <Icon
+                    onClick={() => {
+                      openDeleteModal();
+                      setItem(item);
+                    }}
+                  >
+                    <MoreHorizIcon />
                   </Icon>
                 </header>
+
                 <Img>
                   <img src={item.photo} alt="" />
                 </Img>
@@ -288,12 +327,22 @@ const Home = () => {
                 )}
 
                 {item.comments.length > 1 && (
-                  <ViewComments>View all comments</ViewComments>
+                  <ViewComments
+                    onClick={() => {
+                      handleOpenModal();
+                      setViewCommentsModal(item);
+                    }}
+                  >
+                    {`View all ${item.comments.length} comments`}
+                  </ViewComments>
                 )}
+                <Modal2 open={openModal} handleClose={handleCloseModal}>
+                  <ModalPostDetails item={viewCommentsModal}></ModalPostDetails>
+                </Modal2>
                 {React.Children.toArray(
                   <CommentDetails forceScroll="true">
                     <ReactScrollableFeed className="scrollable-div">
-                      {item.comments.map((comment) => {
+                      {item.comments.slice(-3).map((comment) => {
                         let date = new Date(comment.createdAt);
                         return (
                           <>
@@ -348,7 +397,6 @@ const Home = () => {
                     }}
                   >
                     <input placeholder="Add a comment..." />
-                    {/* <PostBtn>Post</PostBtn> */}
                   </form>
                 </CommentSection>
               </Post>

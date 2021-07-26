@@ -29,15 +29,9 @@ body::-webkit-scrollbar {
   display: none !important;
 }
 
-/* .MuiInputBase-input::placeholder {
-  font-size: 11px;
+.MuiBackdrop-root {
+  background: #00000040 !important;
 }
-
-.MuiInputBase-input,
-.MuiInputLabel-outlined,
-.MuiFormLabel-root.Mui-focused {
-  font-size: 11px !important;
-} */
 
 .test-label {
   color: red;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import { Like, Liked, Chat, Share, Save, Emoji } from '../../svg';
+import { Like, Liked, Chat, Share, Save, Emoji, Saved } from '../../svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getUserProfile } from '../../actions/user.actions.js';
@@ -19,12 +19,14 @@ import {
   PostBtn,
 } from './styles.js';
 import moment from 'moment';
+import { savePost, unsavePost } from '../../actions/auth.actions';
 
 const ModalPostDetails = ({ item }) => {
-  const auth = useSelector((state) => state.auth);
-  const post = useSelector((state) => state.post);
   const dispatch = useDispatch();
   const history = useHistory();
+  const auth = useSelector((state) => state.auth);
+  const post = useSelector((state) => state.post);
+  const savedPosts = localStorage.getItem('ids');
 
   const like = (id) => {
     dispatch(likePost(id));
@@ -107,9 +109,27 @@ const ModalPostDetails = ({ item }) => {
           </div>
 
           <span>
-            <Icon>
-              <Save />
-            </Icon>
+            {savedPosts?.includes(item._id) ? (
+              <Icon
+                marginRight="0"
+                onClick={() => {
+                  console.log('item', item._id);
+                  dispatch(unsavePost(item._id));
+                }}
+              >
+                <Saved />
+              </Icon>
+            ) : (
+              <Icon
+                marginRight="0"
+                onClick={() => {
+                  console.log('item', item._id);
+                  dispatch(savePost(item._id));
+                }}
+              >
+                <Save />
+              </Icon>
+            )}
           </span>
         </Icons>
         {item.likes.length === 1 ? (

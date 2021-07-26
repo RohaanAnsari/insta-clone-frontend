@@ -130,4 +130,10 @@ const getMyFollowingsPost = () => {
   };
 };
 
+export const setPostDetails = (post) => {
+  return async (dispatch) => {
+    dispatch({ type: postConstants.POST_DETAILS, payload: { post } });
+  };
+};
+
 export { getAllPosts, getMyFollowingsPost };

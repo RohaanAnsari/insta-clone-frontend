@@ -43,6 +43,7 @@ import {
   deleteComment,
   getMyFollowingsPost,
   getMyPost,
+  setPostDetails,
 } from '../../actions/post.actions';
 import Loader from '../Loader/Loader';
 import Loader2 from '../Loader2/Loader2';
@@ -267,12 +268,12 @@ const Home = () => {
                     onClick={() => {
                       openDeleteModal();
                       setItem(item);
+                      dispatch(setPostDetails(item));
                     }}
                   >
                     <MoreHorizIcon />
                   </Icon>
                 </header>
-
                 <Img>
                   <img src={item.photo} alt="" />
                 </Img>

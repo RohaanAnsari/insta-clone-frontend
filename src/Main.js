@@ -19,6 +19,7 @@ import {
   UpdatePassword,
   SavedPost,
 } from './components';
+import GoToPost from './components/GoToPost/GoToPost';
 
 const Main = () => {
   const location = useLocation();
@@ -80,6 +81,7 @@ const Main = () => {
           <PrivateRoute exact path="/feed" component={Feed} />
           <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/profile/:userid" component={ProfileUser} />
+          <PrivateRoute exact path="/post/:id" component={GoToPost} />
         </Layout>
       </Switch>
     </>

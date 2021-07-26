@@ -4,6 +4,7 @@ const initState = {
   posts: [],
   myPosts: [],
   myFollowingsPost: [],
+  postDetails: [],
   loading: false,
   creating: false,
   deleting: false,
@@ -95,6 +96,13 @@ export default (state = initState, action) => {
         loading: false,
         myFollowingsPost: action.payload.posts,
       };
+      break;
+    case postConstants.POST_DETAILS:
+      state = {
+        ...state,
+        postDetails: action.payload.post,
+      };
+      break;
   }
   return state;
 };

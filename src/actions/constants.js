@@ -46,6 +46,8 @@ export const postConstants = {
 
   DELETE_COMMENT: 'DELETE_COMMENT',
   DELETE_COMMENT_REQUEST: 'DELETE_COMMENT_REQUEST',
+
+  POST_DETAILS: 'POST_DETAILS',
 };
 
 export const userConstants = {

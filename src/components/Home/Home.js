@@ -5,7 +5,6 @@ import { Like, Liked, Chat, Save, Share, Emoji, Saved } from '../../svg';
 import { CustomModal } from '../../components';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import {
   Wrapper,
   ContentLeft,
@@ -313,7 +312,6 @@ const Home = () => {
                       <Button
                         marginRight="0"
                         onClick={() => {
-                          console.log('item', item._id);
                           dispatch(savePost(item._id));
                         }}
                       >

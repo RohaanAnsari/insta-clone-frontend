@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Like, Liked, Chat, Share, Save, Emoji, Saved } from '../../svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getUserProfile } from '../../actions/user.actions.js';
-import { likePost, unLikePost } from '../../actions/post.actions.js';
+import {
+  likePost,
+  setPostDetails,
+  unLikePost,
+} from '../../actions/post.actions.js';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import {
   Wrapper,
   LeftContainer,
@@ -20,12 +25,16 @@ import {
 } from './styles.js';
 import moment from 'moment';
 import { savePost, unsavePost } from '../../actions/auth.actions';
+import Modal2 from '../Modal2';
+import ModalDetails from '../ModalDetails/ModalDetails';
 
 const ModalPostDetails = ({ item }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const auth = useSelector((state) => state.auth);
   const post = useSelector((state) => state.post);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [details, setDetails] = useState({});
   const savedPosts = localStorage.getItem('ids');
 
   const like = (id) => {
@@ -37,6 +46,14 @@ const ModalPostDetails = ({ item }) => {
     console.log(id);
     dispatch(unLikePost(id));
   };
+
+  const openDeleteModal = () => {
+    setOpenDelete(true);
+  };
+
+  const closeDeleteModal = () => {
+    setOpenDelete(false);
+  };
   return (
     <Wrapper>
       <LeftContainer>
@@ -45,16 +62,30 @@ const ModalPostDetails = ({ item }) => {
         </div>
       </LeftContainer>
       <RightContainer>
+        <Modal2 zoom={true} open={openDelete} handleClose={closeDeleteModal}>
+          <ModalDetails close={setOpenDelete} data={item} />
+        </Modal2>
         <header>
-          <Avatar src={item.postedBy.profilePicture} />
-          <h3
+          <span>
+            <Avatar src={item.postedBy.profilePicture} />
+            <h3
+              onClick={() => {
+                dispatch(getUserProfile(item.postedBy._id));
+                history.push(`/profile/${item.postedBy._id}`);
+              }}
+            >
+              {item.postedBy.name}
+            </h3>
+          </span>
+          <span
             onClick={() => {
-              dispatch(getUserProfile(item.postedBy._id));
-              history.push(`/profile/${item.postedBy._id}`);
+              openDeleteModal();
+              setDetails(item);
+              dispatch(setPostDetails(item));
             }}
           >
-            {item.postedBy.name}
-          </h3>
+            <MoreHorizIcon />
+          </span>
         </header>
         <Divider />
         <header>

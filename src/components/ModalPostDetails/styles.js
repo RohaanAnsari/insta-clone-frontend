@@ -35,8 +35,14 @@ export const RightContainer = styled.div`
   header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 15px 15px;
-    /* border: 1px solid #262626; */
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
     h3 {
       margin-left: 10px;
@@ -46,7 +52,7 @@ export const RightContainer = styled.div`
       letter-spacing: 1px;
 
       &:hover {
-        border-bottom: 1.8px solid#262626;
+        border-bottom: 1.8px solid #262626;
       }
     }
   }

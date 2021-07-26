@@ -31,7 +31,7 @@ const Feed = () => {
   useEffect(() => {
     setTimeout(() => {
       setPosts(post.posts);
-    }, 3000);
+    }, 700);
   });
 
   const skeleton = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];

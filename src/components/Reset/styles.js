@@ -14,8 +14,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 30px;
-  /* margin-top: 16rem; */
   border-radius: 5px;
+
+  @media (max-width: 500px) {
+    width: 300px;
+    margin: auto;
+  }
 `;
 
 export const Circle = styled.div`
@@ -51,6 +55,11 @@ export const Text = styled.div`
     font-weight: 400;
     color: #8e8e8e;
     width: 300px;
+
+    @media (max-width: 500px) {
+      width: 250px;
+      margin: auto;
+    }
   }
 `;
 
@@ -168,6 +177,11 @@ export const LoginBtn = styled.div`
   h1 {
     font-size: 14px;
     font-weight: 600;
+  }
+  @media (max-width: 500px) {
+    width: 298px;
+    /* margin-top: 1rem; */
+    border: 1px solid #dbdbdb;
   }
 `;
 

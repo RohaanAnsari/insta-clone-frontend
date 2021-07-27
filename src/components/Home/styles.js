@@ -8,11 +8,15 @@ export const Wrapper = styled.div`
   display: flex;
   position: relative;
   overflow-y: scroll;
+  position: relative;
 
-  @media (max-width: 870px) {
+  @media (max-width: 1000px) {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 0.5rem;
+  }
+  @media (max-width: 870px) {
+    padding-top: 5.5rem;
   }
 
   &::-webkit-scrollbar {
@@ -39,15 +43,18 @@ export const ContentLeft = styled.div`
   padding-bottom: 10px !important;
   display: flex;
   flex-direction: column;
+  @media (max-width: 1000px) {
+    margin-right: 0;
+  }
 `;
 
 export const ContentRight = styled.section`
-  /* border: 1px solid black; */
   height: 100%;
   width: 285px;
   max-width: 285px;
   position: sticky;
 
+  /* border: 1px solid black; */
   @media (max-width: 1000px) {
     display: none;
   }

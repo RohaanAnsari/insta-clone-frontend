@@ -28,10 +28,19 @@ export const ImageContainer = styled.div`
     img {
     }
   }
+
+  @media (max-width: 760px) {
+    display: none;
+  }
 `;
 
 export const FormContainer = styled.div`
   height: 92%;
   margin-top: 20px;
   width: 100%;
+  @media (max-width: 760px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 `;

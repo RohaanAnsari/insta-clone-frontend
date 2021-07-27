@@ -13,6 +13,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 500px) {
+    width: 300px;
+    margin-top: 1rem;
+  }
 `;
 
 export const Logo = styled.div`
@@ -21,6 +26,11 @@ export const Logo = styled.div`
   display: block;
   img {
     height: 60px !important;
+  }
+  @media (max-width: 500px) {
+    img {
+      height: 45px !important;
+    }
   }
 `;
 
@@ -73,6 +83,9 @@ export const TextInput = styled(TextField)`
   & .MuiOutlinedInput-notchedOutline {
     width: 100%;
   }
+
+  @media (max-width: 500px) {
+  }
 `;
 
 export const Button = styled.button`
@@ -107,6 +120,10 @@ export const BoxBottom = styled.div`
   text-align: center;
   height: 50px;
   margin: 0 0 10px 0;
+  @media (max-width: 500px) {
+    padding-top: 13px;
+    width: 300px;
+  }
 `;
 
 export const StyledLink = styled(Link)`

@@ -5,7 +5,14 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const AuthComponents = ({ children }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', height: '100vh' }}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        height: '100vh',
+        justifyContent: 'center',
+      }}
+    >
       <Wrapper>
         <ImageContainer>
           <img src="/images/mobiles.png" alt="mobiles" />

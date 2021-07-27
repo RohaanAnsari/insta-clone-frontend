@@ -17,21 +17,28 @@ export const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   height: max-content;
-  /* min-height: 35rem; */
-  /* padding: 30px; */
   padding: 30px 0;
   padding-top: 7rem;
   width: 35rem;
   background: #ffffff;
   border: 3px double #dbdbdb;
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 export const Logo = styled.div`
   margin-top: -50px;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1rem;
   display: block;
   img {
     height: 60px !important;
+    @media (max-width: 500px) {
+      /* margin: auto; */
+      img {
+        height: 45px !important;
+      }
+    }
   }
 `;
 

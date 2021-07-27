@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   text-decoration: none;
   height: 54px;
   width: 100%;
+
   border-bottom: 1px solid #dbdbdb;
   position: fixed;
   top: 0;
@@ -27,15 +28,25 @@ export const Container = styled.div`
   min-height: auto;
   width: 72%;
   max-width: 975px;
-  min-width: 860.33px;
+  min-width: 985px;
   margin: 0 auto;
   padding: 0 20px 0 20px;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 870px) {
+  @media (max-width: 930px) {
     min-width: auto;
+    width: 85vw;
+  }
+  @media (max-width: 800px) {
+    min-width: 68rem;
+  }
+  @media (max-width: 670px) {
+    min-width: 65rem;
+  }
+  @media (max-width: 620px) {
+    min-width: 63rem;
   }
 `;
 
@@ -43,6 +54,10 @@ export const Logo = styled(Link)`
   max-width: 360px;
   width: 100%;
   cursor: pointer;
+  display: flex;
+  @media (max-width: 930px) {
+    /* width: 30vw; */
+  }
 `;
 
 export const Search = styled.div`
@@ -60,6 +75,11 @@ export const Search = styled.div`
   overflow: hidden;
   background: #fafafa;
   height: 28px;
+
+  /* @media (max-width: 930px) {
+    display: flex;
+    min-width: 215px;
+  } */
 
   input {
     font-size: 14px;
@@ -93,6 +113,10 @@ export const NavIcons = styled.div`
   /* background: red; */
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 930px) {
+    /* width: 30vw; */
+  }
 `;
 
 export const Icons = styled.div`

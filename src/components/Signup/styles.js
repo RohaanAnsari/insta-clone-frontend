@@ -13,6 +13,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 1.5rem;
+  @media (max-width: 500px) {
+    width: 300px;
+    margin-top: 1rem;
+  }
 `;
 
 export const Logo = styled.div`
@@ -21,6 +25,12 @@ export const Logo = styled.div`
   display: block;
   img {
     height: 60px !important;
+  }
+
+  @media (max-width: 500px) {
+    img {
+      height: 45px !important;
+    }
   }
 `;
 
@@ -31,6 +41,10 @@ export const Text = styled.h2`
   margin: 0 40px 10px 40px;
   color: #8e8e8e;
   line-height: 20px;
+
+  @media (max-width: 500px) {
+    font-size: 15px;
+  }
 `;
 
 export const Divider = styled.div`
@@ -113,6 +127,11 @@ export const BoxBottom = styled.div`
   text-align: center;
   height: 50px;
   margin: 0 0 10px 0;
+  @media (max-width: 500px) {
+    width: 300px;
+    padding-top: 13px;
+    margin-top: 1rem;
+  }
 `;
 
 export const LoginLink = styled(Link)`

@@ -37,7 +37,7 @@ body::-webkit-scrollbar {
   color: red;
 }
 
-.makeStyles-modal-1 {
+/* .makeStyles-modal-1 {
   z-index: 999999999 !important;
 }
 .MuiPopover-root {
@@ -46,4 +46,4 @@ body::-webkit-scrollbar {
 
 .makeStyles-modal {
   z-index: 999999999 !important;
-}
+} */

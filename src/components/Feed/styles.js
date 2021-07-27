@@ -103,10 +103,29 @@ export const PostContainer = styled.div`
 export const Img = styled.div`
   width: 100%;
   height: max-content;
-  max-height: 400px;
+  max-height: 220px;
+  @media (max-width: 930px) {
+    img {
+      height: 40rem !important;
+    }
+  }
+
+  @media (max-width: 700px) {
+    max-height: 400px;
+    img {
+      height: 40rem;
+    }
+  }
+  @media (max-width: 500px) {
+    max-height: 400px;
+    img {
+      height: 40rem;
+    }
+  }
+
   img {
     width: 100%;
-    height: 40rem;
+    height: 22rem;
     object-fit: cover;
   }
 `;

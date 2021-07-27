@@ -20,11 +20,15 @@ import {
 } from './styles';
 import Loader2 from '../Loader2/Loader2';
 import Profile from '../Profile/Profile';
+import Modal2 from '../Modal2';
+import ModalPostDetails from '../ModalPostDetails';
 
 const ProfileUser = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user);
+  const [openModal, setOpenModal] = useState(false);
+  const [item, setItem] = useState({});
   const [showBtn, setShowBtn] = useState(true);
   const { userid } = useParams();
   const x = localStorage.getItem('user');
@@ -43,6 +47,14 @@ const ProfileUser = () => {
       setShowBtn(false);
       console.log('UnfollowUser', showBtn);
     });
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   useEffect(() => {
@@ -107,12 +119,20 @@ const ProfileUser = () => {
           <PostsContainer>
             {React.Children.toArray(
               user?.posts?.map((post) => (
-                <Post>
+                <Post
+                  onClick={() => {
+                    setItem(post);
+                    handleOpenModal();
+                  }}
+                >
                   <img src={post.photo} alt="" />
                 </Post>
               ))
             )}
           </PostsContainer>
+          <Modal2 open={openModal} handleClose={handleCloseModal}>
+            <ModalPostDetails item={item} />
+          </Modal2>
         </Wrapper>
       )}
     </>

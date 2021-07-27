@@ -140,6 +140,7 @@ export const Post = styled.div`
   max-width: 293px;
   max-height: 293px;
   height: 293px;
+  cursor: pointer;
   /* border: 1px solid lightslategray; */
   background: #fff;
 

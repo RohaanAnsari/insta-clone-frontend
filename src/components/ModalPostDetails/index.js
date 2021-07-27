@@ -123,11 +123,11 @@ const ModalPostDetails = ({ item }) => {
             {post.liking ? (
               <Icons />
             ) : item.likes.includes(auth.user._id) ? (
-              <Icon onClick={() => unLike(item._id)}>
+              <Icon>
                 <Liked />
               </Icon>
             ) : (
-              <Icon onClick={() => like(item._id)}>
+              <Icon>
                 <Like />
               </Icon>
             )}
@@ -173,17 +173,8 @@ const ModalPostDetails = ({ item }) => {
           <Icon>
             <Emoji />
           </Icon>
-          <input
-            placeholder="Add a comment..."
-            // value={cmnt}
-            // onChange={(e) => setCmnt(e.target.value)}
-          />
-          <PostBtn
-            // onClick={(e) => postComment(e, item._id)}
-            type="submit"
-          >
-            Post
-          </PostBtn>
+          <input placeholder="Add a comment..." />
+          <PostBtn type="submit">Post</PostBtn>
         </CommentController>
       </RightContainer>
     </Wrapper>

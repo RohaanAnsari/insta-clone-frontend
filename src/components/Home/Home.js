@@ -277,7 +277,15 @@ const Home = () => {
                   <img src={item.photo} alt="" />
                 </Img>
                 <Caption>
-                  <div>{item.postedBy.name}</div>
+                  <div
+                    onClick={() => {
+                      console.log(item.postedBy._id);
+                      dispatch(getUserProfile(item.postedBy._id));
+                      history.push(`/profile/${item.postedBy._id}`);
+                    }}
+                  >
+                    {item.postedBy.name}
+                  </div>
                   <span> {item.body}</span>
                 </Caption>
                 <Buttons>

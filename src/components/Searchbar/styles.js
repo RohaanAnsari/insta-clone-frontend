@@ -28,7 +28,6 @@ export const Result = styled.div`
   position: fixed;
   top: ${({ top }) => top || '4.9rem'};
   left: ${({ left }) => left || '37%'};
-  /* padding: 10px 20px; */
   width: 400px;
   min-height: max-content;
   max-height: 300px;
@@ -45,6 +44,36 @@ export const Result = styled.div`
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  @media (max-width: 1200px) {
+    left: 33.5vw;
+  }
+
+  @media (max-width: 900px) {
+    left: 32vw !important;
+    width: 330px;
+  }
+
+  @media (max-width: 750px) {
+    left: 26vw !important;
+  }
+
+  @media (max-width: 650px) {
+    left: 21vw !important;
+  }
+
+  @media (max-width: 550px) {
+    left: 26vw !important;
+    width: 310px;
+  }
+  @media (max-width: 500px) {
+    left: 14vw !important;
+    width: 280px;
+  }
+  @media (max-width: 400px) {
+    left: 18vw !important;
+    width: 280px;
+  }
 `;
 
 export const User = styled.div`
@@ -56,10 +85,19 @@ export const User = styled.div`
   cursor: pointer;
   transition: background-color 0.1s linear;
 
+  @media (max-width: 900px) {
+    padding: 8px;
+  }
+
   div {
     &.MuiAvatar-root {
       width: 60px;
       height: 60px;
+
+      @media (max-width: 900px) {
+        width: 40px;
+        height: 40px;
+      }
     }
 
     display: flex;
@@ -68,6 +106,12 @@ export const User = styled.div`
     h4 {
       margin-left: 15px;
       font-weight: 600;
+
+      @media (max-width: 900px) {
+        margin-left: 17px;
+        font-weight: 600;
+        font-size: 13px;
+      }
     }
   }
 
@@ -83,5 +127,4 @@ export const Divider = styled.div`
   width: 100%;
   box-shadow: 0 1px 0 0 #8e8e8e35;
   height: 1px;
-  /* margin: 5px auto; */
 `;

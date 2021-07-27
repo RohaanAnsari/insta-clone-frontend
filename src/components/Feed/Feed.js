@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPosts } from '../../actions/post.actions.js';
 import { Liked, Chat } from '../../svg';
@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 const Feed = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const stageCanvasRef = useRef(null);
   const post = useSelector((state) => state.post);
   const [open, setOpen] = useState(false);
   const [item, setItem] = useState({});
@@ -31,12 +32,21 @@ const Feed = () => {
   useEffect(() => {
     setTimeout(() => {
       setPosts(post.posts);
-    }, 700);
+      // setPosts(null);
+    }, 1000);
   });
+  let width;
+  useEffect(() => {
+    if (stageCanvasRef.current) {
+      let height = stageCanvasRef.current.offsetHeight;
+      width = stageCanvasRef.current.offsetWidth;
+      console.log('height', height, 'width', width);
+    }
+  }, [stageCanvasRef, window.addEventListener('resize', stageCanvasRef)]);
 
   const skeleton = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
-    <Wrapper>
+    <Wrapper ref={stageCanvasRef}>
       {posts === null
         ? skeleton.map((item) => (
             <Skeleton

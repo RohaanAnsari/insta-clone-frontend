@@ -16,6 +16,7 @@ const CustomModal = ({ handleClose, open, children }) => {
         BackdropProps={{
           timeout: 500,
         }}
+        style={{ zIndex: '100000' }}
       >
         <Grow in={open}>
           <>{children}</>

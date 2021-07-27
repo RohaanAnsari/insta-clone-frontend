@@ -3,8 +3,13 @@ import Avatar from '@material-ui/core/Avatar';
 
 export const Wrapper = styled.div`
   max-width: 935px;
+  /* min-width: 935px; */
   height: 100%;
   padding: 2px 20px 0 20px;
+
+  @media (max-width: 870px) {
+    padding-top: 3.5rem;
+  }
 `;
 
 export const Header = styled.header`
@@ -18,6 +23,19 @@ export const Header = styled.header`
     width: 160px;
     height: 160px;
   }
+  @media (max-width: 920px) {
+    min-width: 600px;
+  }
+
+  @media (max-width: 900px) {
+    & .MuiAvatar-root {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  @media (max-width: 500px) {
+    margin-left: -30px;
+  }
 `;
 
 export const ProfilePicture = styled(Avatar)``;
@@ -30,6 +48,9 @@ export const UserDetails = styled.div`
   width: 100%;
   margin-left: 30px;
   padding: 20px 5px;
+  @media (max-width: 500px) {
+    margin-left: 14px;
+  }
 `;
 
 export const Top = styled.div`
@@ -47,6 +68,10 @@ export const Top = styled.div`
       font-weight: 300;
       line-height: 32px;
       color: #555555;
+      @media (max-width: 920px) {
+        font-size: 18px;
+        line-height: 20px;
+      }
     }
 
     button {
@@ -65,13 +90,24 @@ export const Top = styled.div`
       &:active {
         background-color: #dbdbdb;
       }
+      @media (max-width: 500px) {
+        margin-left: 13px;
+        font-size: 12px;
+        line-height: 14px;
+        height: 25px;
+        padding: 3px 6px;
+      }
     }
   }
 
   span {
     cursor: pointer;
+    margin-right: 15px;
     & .MuiSvgIcon-root {
       font-size: 25px;
+    }
+    @media (max-width: 500px) {
+      margin-right: 50px;
     }
   }
 `;
@@ -87,6 +123,11 @@ export const Number = styled.div`
   font-size: 16px;
   font-weight: 600;
   margin-right: 5px;
+  @media (max-width: 500px) {
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 3px;
+  }
 `;
 
 export const Text = styled.div`
@@ -104,12 +145,19 @@ export const Bottom = styled.div`
     font-weight: 600;
     line-height: 26px;
     letter-spacing: 0.9px;
+    @media (max-width: 500px) {
+      font-size: 14px;
+      font-weight: 600;
+    }
   }
 
   p {
     color: rgb(38, 38, 38);
     font-size: 16px;
     font-weight: 400;
+    @media (max-width: 500px) {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -127,6 +175,9 @@ export const PostsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
+  @media (max-width: 900px) {
+    gap: 14px !important;
+  }
 `;
 
 export const Post = styled.div`
@@ -137,6 +188,13 @@ export const Post = styled.div`
   background: #fff;
   cursor: pointer !important;
 
+  @media (max-width: 900px) {
+    width: 270px;
+  }
+  @media (max-width: 500px) {
+    min-width: 46rem !important;
+  }
+
   &:hover {
     filter: brightness(60%);
   }
@@ -144,7 +202,7 @@ export const Post = styled.div`
   img {
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 `;
 

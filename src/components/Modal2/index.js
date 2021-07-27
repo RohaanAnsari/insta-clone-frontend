@@ -74,6 +74,8 @@ export const Wrapper = styled.div`
   background: transparent;
   width: max-content;
   border: none;
+  position: relative;
+  z-index: 100000;
 
   &:active,
   &:target,

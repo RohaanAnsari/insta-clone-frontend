@@ -46,6 +46,9 @@ export const ContentLeft = styled.div`
   @media (max-width: 1000px) {
     margin-right: 0;
   }
+  @media (max-width: 500px) {
+    max-width: 50rem;
+  }
 `;
 
 export const ContentRight = styled.section`

@@ -35,7 +35,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 930px) {
+  @media (max-width: 960px) {
     min-width: auto;
     width: 85vw;
   }
@@ -48,6 +48,9 @@ export const Container = styled.div`
   @media (max-width: 620px) {
     min-width: 63rem;
   }
+  @media (max-width: 500px) {
+    min-width: 52rem;
+  }
 `;
 
 export const Logo = styled(Link)`
@@ -55,8 +58,10 @@ export const Logo = styled(Link)`
   width: 100%;
   cursor: pointer;
   display: flex;
-  @media (max-width: 930px) {
-    /* width: 30vw; */
+  @media (max-width: 500px) {
+    img {
+      width: 70%;
+    }
   }
 `;
 
@@ -75,11 +80,6 @@ export const Search = styled.div`
   overflow: hidden;
   background: #fafafa;
   height: 28px;
-
-  /* @media (max-width: 930px) {
-    display: flex;
-    min-width: 215px;
-  } */
 
   input {
     font-size: 14px;
@@ -110,13 +110,9 @@ export const NavIcons = styled.div`
   max-width: 360px;
   width: 100%;
   white-space: noWrap;
-  /* background: red; */
+
   display: flex;
   justify-content: flex-end;
-
-  @media (max-width: 930px) {
-    /* width: 30vw; */
-  }
 `;
 
 export const Icons = styled.div`
@@ -124,6 +120,12 @@ export const Icons = styled.div`
   padding: 0 0 0 24px;
   display: flex;
   justify-content: space-around;
+  @media (max-width: 500px) {
+    padding: 0 0 0 20px;
+  }
+  @media (max-width: 500px) {
+    padding: 0 0 0 40px;
+  }
 `;
 
 const sharedIconStyles = css`

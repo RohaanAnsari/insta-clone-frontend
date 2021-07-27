@@ -7,6 +7,33 @@ export const Wrapper = styled.section`
   flex-wrap: wrap;
   padding-bottom: 20px;
   justify-content: flex-start;
+
+  @media (max-width: 1000px) {
+    /* position: absolute; */
+    margin-left: -9px;
+  }
+
+  @media (max-width: 872px) {
+    padding-top: 1rem !important;
+  }
+
+  @media (max-width: 871px) {
+    padding-top: 5rem !important;
+  }
+
+  @media (max-width: 929px) {
+    & .MuiSkeleton-root {
+      width: calc(100% - 2vw);
+      height: 40rem !important;
+    }
+
+    @media (max-width: 700px) {
+      & .MuiSkeleton-root {
+        width: 100% !important;
+        height: 40rem !important;
+      }
+    }
+  }
 `;
 
 export const Hover = styled.span`
@@ -47,14 +74,22 @@ export const Hover = styled.span`
 export const PostContainer = styled.div`
   position: relative;
   cursor: pointer;
-  width: 300px;
+  width: 310px;
   min-height: max-content;
   height: 20rem;
   margin-bottom: 10px !important;
   padding-bottom: 10px !important;
   overflow: hidden;
   margin-left: 10px;
-  /* background-color: red; */
+
+  @media (max-width: 929px) {
+    width: calc(100% - 2vw);
+    height: 40rem !important;
+  }
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 
   &:hover {
     filter: brightness(92%);
@@ -71,7 +106,7 @@ export const Img = styled.div`
   max-height: 400px;
   img {
     width: 100%;
-    height: 20rem;
+    height: 40rem;
     object-fit: cover;
   }
 `;

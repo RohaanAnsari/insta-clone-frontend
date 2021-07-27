@@ -36,6 +36,7 @@ export default function SimplePopover({
           vertical: transformVO ? transformVO : 'center',
           horizontal: transformHO ? transformHO : 'center',
         }}
+        style={{ zIndex: '999999999' }}
       >
         {children}
       </Popover>

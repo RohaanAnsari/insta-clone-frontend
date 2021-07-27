@@ -38,12 +38,12 @@ body::-webkit-scrollbar {
 }
 
 .makeStyles-modal-1 {
-  z-index: 100000 !important;
+  z-index: 999999999 !important;
 }
 .MuiPopover-root {
-  z-index: 100000 !important;
+  z-index: 999999999 !important;
 }
 
 .makeStyles-modal {
-  z-index: 100000 !important;
+  z-index: 999999999 !important;
 }

@@ -35,9 +35,8 @@ export default function Modal2({
           open={open}
           onClose={handleClose}
           closeAfterTransition
-          disableAutoFocus={true}
-          disableEnforceFocus
           BackdropComponent={Backdrop}
+          style={{ zIndex: '9999999999' }}
           BackdropProps={{
             timeout: 500,
           }}
@@ -55,8 +54,8 @@ export default function Modal2({
           open={open}
           onClose={handleClose}
           closeAfterTransition
-          disableAutoFocus={true}
           BackdropComponent={Backdrop}
+          style={{ zIndex: '9999999999' }}
           BackdropProps={{
             timeout: 500,
           }}

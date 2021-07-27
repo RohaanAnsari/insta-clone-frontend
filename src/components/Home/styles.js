@@ -264,10 +264,40 @@ export const Img = styled.div`
 `;
 
 export const Caption = styled.div`
-  font-size: 15px;
-  font-weight: 700;
-  padding: 5px 10px;
-  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  margin: 5px auto;
+  div {
+    font-size: 15px;
+    font-weight: 700;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      background: black;
+      width: 90%;
+      border: 1px solid black;
+      position: absolute;
+      top: 23px;
+      left: 4px;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: 0.2s;
+    }
+
+    &:hover:after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+  span {
+    font-size: 15px;
+    margin-left: 5px;
+  }
 `;
 
 export const Buttons = styled.section`

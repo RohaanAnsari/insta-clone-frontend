@@ -276,7 +276,10 @@ const Home = () => {
                 <Img>
                   <img src={item.photo} alt="" />
                 </Img>
-                <Caption>{item.body}</Caption>
+                <Caption>
+                  <div>{item.postedBy.name}</div>
+                  <span> {item.body}</span>
+                </Caption>
                 <Buttons>
                   <BtnsLeft>
                     {post.liking ? (

@@ -75,13 +75,13 @@ const Main = () => {
         <Route exact path="/reset" component={Reset} />
         <Route path="/reset/:token" component={UpdatePassword} />
         <Layout>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/messages" component={Messages} />
-          <Route exact path="/savedpost" component={SavedPost} />
-          <Route exact path="/feed" component={Feed} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/profile/:userid" component={ProfileUser} />
-          <Route exact path="/post/:id" component={GoToPost} />
+          <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/messages" component={Messages} />
+          <PrivateRoute exact path="/savedpost" component={SavedPost} />
+          <PrivateRoute exact path="/feed" component={Feed} />
+          <PrivateRoute exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/profile/:userid" component={ProfileUser} />
+          <PrivateRoute exact path="/post/:id" component={GoToPost} />
         </Layout>
       </Switch>
     </>

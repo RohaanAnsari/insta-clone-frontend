@@ -20,4 +20,3 @@ const appReducer = combineReducers({
 });
 
 export default rootReducer;
-// export default persistReducer(persistConfig, rootReducer);

@@ -25,7 +25,7 @@ const SavedPost = () => {
 
   return (
     <Wrapper>
-      {posts === null && <Note>Saved posts will appear here</Note>}
+      {posts?.length === 0 && <Note>Saved posts will appear here</Note>}
       {React.Children.toArray(
         posts?.map((item) => {
           return (

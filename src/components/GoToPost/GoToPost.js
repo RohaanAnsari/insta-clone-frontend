@@ -18,6 +18,7 @@ import {
   Likes,
   CommentController,
   PostBtn,
+  Parent,
 } from './styles.js';
 import { getUserProfile } from '../../actions/user.actions.js';
 

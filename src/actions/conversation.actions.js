@@ -20,7 +20,7 @@ export const getConversation = (userid) => {
     const res = await axios.get(`/conversations/b/w/${userid}`);
 
     const id = res.data.id.join(', ');
-
+    console.log('persist', res.data);
     if (res.status === 200) {
       dispatch(getMessages(res.data.id.join(', ')));
       dispatch({
@@ -80,12 +80,12 @@ const getReceiverInfo = (id) => {
   };
 };
 
-export const deleteConversation = (id, userid) => {
+export const deleteConversation = (id) => {
   return async (dispatch) => {
     const res = await axios.delete(`/conversation/${id}`);
-
+    console.log('id to be deleted', id);
+    console.log(res);
     if (res.status === 200) {
-      console.log(res.data);
       dispatch({
         type: conversationConstants.DELETE_CONVERSATION,
         payload: { id: res.data.conversation },

@@ -75,9 +75,9 @@ const Messages = () => {
     });
   }, [location.pathname === '/messages']);
 
-  useEffect(() => {
-    arrivalMessage && dispatch(getMessages(conversation.conversationId));
-  }, [arrivalMessage]);
+  //   useEffect(() => {
+  //     arrivalMessage && dispatch(getMessages(conversation.conversationId));
+  //   }, [arrivalMessage]);
 
   useEffect(() => {
     const members = conversation.chats.map((e) => e.members);
@@ -106,6 +106,7 @@ const Messages = () => {
     setReceiverId(user._id);
     setCurrentChat(user);
     dispatch(getConversation(user._id));
+    console.log(user._id);
   };
 
   const handleSubmit = (e, msg) => {
@@ -141,9 +142,8 @@ const Messages = () => {
 
   const conversationDelete = () => {
     console.log('ConversationId', conversation.conversationId);
-    dispatch(
-      deleteConversation(conversation.conversationId, auth.user._id)
-    ).then(() => {
+    dispatch(deleteConversation(conversation.conversationId)).then(() => {
+      console.log('reload');
       window.location.reload();
     });
   };
@@ -168,6 +168,7 @@ const Messages = () => {
                   onClick={() => {
                     getText(user);
                     setCurrentChat(user);
+                    //   console.log(user);
                   }}
                 >
                   <div>

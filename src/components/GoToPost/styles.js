@@ -1,20 +1,28 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
+
+export const Parent = styled.section`
+  height: 100vh;
+  width: 100vw;
+  background: lightpink;
+  display: flex;
+  /* align-items: flex-start; */
+`;
 
 export const Wrapper = styled.div`
-  margin: auto 10px;
-  margin-top: 3.5rem;
+  margin: auto;
+  /* margin-top: 2rem; */
   max-height: 900px;
   height: 650px;
   width: 878px;
   display: flex;
   justify-content: center;
-  /* background: black; */
+  /* align-items: flex-start; */
   width: 100rem;
   cursor: pointer;
 `;
 
 export const LeftContainer = styled.div`
-  width: 59%;
+  width: 65%;
 
   div {
     height: 100%;
@@ -31,7 +39,7 @@ export const LeftContainer = styled.div`
 
 export const RightContainer = styled.div`
   background: #ffffff;
-  width: 35%;
+  width: 31%;
 
   header {
     display: flex;

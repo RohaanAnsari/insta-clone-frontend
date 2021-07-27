@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import storage from 'redux-persist/lib/storage';
 import authReducer from './auth.reducer';
 import userReducer from './user.reducer';
 import postReducer from './post.reducer';
@@ -19,3 +20,4 @@ const appReducer = combineReducers({
 });
 
 export default rootReducer;
+// export default persistReducer(persistConfig, rootReducer);

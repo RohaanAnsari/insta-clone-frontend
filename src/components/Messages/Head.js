@@ -36,9 +36,9 @@ const Head = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      setOpen(false);
-    }, 1000);
+    //  setTimeout(() => {
+    setOpen(false);
+    //  }, 100);
   }, [conversation.chats.length]);
 
   return (

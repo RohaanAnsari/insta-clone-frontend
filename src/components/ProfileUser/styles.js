@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   max-width: 935px;
   height: 100%;
   padding: 2px 20px 0 20px;
+  @media (max-width: 870px) {
+    padding-top: 3.5rem;
+  }
 `;
 
 export const Header = styled.header`
@@ -13,11 +16,23 @@ export const Header = styled.header`
   padding: 10px 30px;
   display: flex;
   align-items: center;
-  /* border: 1px solid black; */
 
   & .MuiAvatar-root {
     width: 160px;
     height: 160px;
+  }
+
+  @media (max-width: 920px) {
+    min-width: 600px;
+  }
+  @media (max-width: 900px) {
+    & .MuiAvatar-root {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  @media (max-width: 500px) {
+    margin-left: -30px;
   }
 `;
 
@@ -31,16 +46,24 @@ export const UserDetails = styled.div`
   width: 100%;
   margin-left: 30px;
   padding: 20px 5px;
+  @media (max-width: 500px) {
+    margin-left: 14px;
+  }
 `;
 
 export const Top = styled.div`
   display: flex;
+  align-items: center;
 
   h1 {
     font-size: 28px;
     font-weight: 300;
     line-height: 32px;
     color: #555555;
+    @media (max-width: 920px) {
+      font-size: 18px;
+      line-height: 20px;
+    }
   }
 
   button {
@@ -57,6 +80,13 @@ export const Top = styled.div`
     cursor: pointer;
     &:active {
       background-color: #dbdbdb;
+    }
+    @media (max-width: 500px) {
+      margin-left: 13px;
+      font-size: 12px;
+      line-height: 14px;
+      height: 25px;
+      padding: 3px 6px;
     }
   }
 
@@ -78,6 +108,13 @@ export const Top = styled.div`
         box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
         border: none;
       }
+
+      @media (max-width: 920px) {
+        font-size: 12px;
+        font-weight: 400;
+        padding: 1px 6px;
+        margin-left: 1px;
+      }
     }
   }
 `;
@@ -93,6 +130,11 @@ export const Number = styled.div`
   font-size: 16px;
   font-weight: 600;
   margin-right: 5px;
+  @media (max-width: 500px) {
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 3px;
+  }
 `;
 
 export const Text = styled.div`
@@ -109,6 +151,13 @@ export const Bottom = styled.div`
     font-weight: 600;
     line-height: 26px;
     letter-spacing: 0.9px;
+    @media (max-width: 500px) {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    @media (max-width: 500px) {
+      font-size: 14px;
+    }
   }
 
   p {
@@ -130,9 +179,11 @@ export const PostsContainer = styled.div`
   height: 100%;
   padding-bottom: 2rem;
   display: flex;
-  /* flex-direction: row-reverse; */
   flex-wrap: wrap;
   gap: 25px;
+  @media (max-width: 900px) {
+    gap: 14px !important;
+  }
 `;
 
 export const Post = styled.div`
@@ -141,8 +192,14 @@ export const Post = styled.div`
   max-height: 293px;
   height: 293px;
   cursor: pointer;
-  /* border: 1px solid lightslategray; */
   background: #fff;
+
+  @media (max-width: 900px) {
+    width: 270px;
+  }
+  @media (max-width: 500px) {
+    min-width: 46rem !important;
+  }
 
   &:hover {
     filter: brightness(60%);

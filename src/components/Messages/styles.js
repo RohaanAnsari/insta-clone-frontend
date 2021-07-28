@@ -6,6 +6,16 @@ export const Center = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1000px) {
+    padding-top: 0.2rem;
+  }
+
+  @media (max-width: 870px) {
+    padding-top: 5rem;
+  }
+  @media (max-width: 550px) {
+    padding-top: 7rem;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -26,6 +36,10 @@ export const Wrapper = styled.div`
   }
 
   -ms-overflow-style: none;
+
+  @media (max-width: 550px) {
+    min-height: 89vh;
+  }
 `;
 
 export const ContainerLeft = styled.div`
@@ -35,6 +49,17 @@ export const ContainerLeft = styled.div`
   border-right: 1px solid #dbdbdb;
   border-top: none;
   overflow: hidden;
+
+  @media (max-width: 1000px) {
+    min-width: 270px;
+  }
+  @media (max-width: 550px) {
+    min-width: 200px;
+  }
+
+  @media (max-width: 500px) {
+    height: 88vh;
+  }
 `;
 
 export const ContainerRight = styled.div`
@@ -64,6 +89,10 @@ export const InitialDiv = styled.div`
       line-height: 26px;
       margin-top: 15px;
       letter-spacing: 1px;
+
+      @media (max-width: 900px) {
+        font-size: 19px;
+      }
     }
 
     h5 {
@@ -72,6 +101,9 @@ export const InitialDiv = styled.div`
       font-weight: 400;
       color: #8e8e8e;
       margin-top: 10px;
+      @media (max-width: 900px) {
+        font-size: 12px;
+      }
     }
 
     button {
@@ -110,6 +142,10 @@ export const Circle = styled.div`
   div {
     margin-top: 7px;
   }
+  @media (max-width: 950px) {
+    width: 90px;
+    height: 90px;
+  }
 `;
 
 export const Top = styled.div`
@@ -123,6 +159,10 @@ export const Top = styled.div`
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
+    @media (max-width: 950px) {
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
   span {
     margin-left: 5px;
@@ -194,6 +234,10 @@ export const NewMessage = styled.h4`
   line-height: 18px;
   text-align: center;
   color: ${({ color }) => color || '#262626'};
+  @media (max-width: 900px) {
+    width: 85%;
+    font-size: 12px;
+  }
 `;
 
 export const Dot = styled.span`

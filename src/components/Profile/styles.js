@@ -3,7 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 
 export const Wrapper = styled.div`
   max-width: 935px;
-  /* min-width: 935px; */
   height: 100%;
   padding: 2px 20px 0 20px;
 
@@ -212,8 +211,11 @@ export const UpdateModal = styled.div`
   width: 600px;
   background: #fff;
 
+  @media (max-width: 620px) {
+    width: 100%;
+  }
+
   header {
-    /* border: 1px solid #272727; */
     justify-content: space-between;
     .MuiAvatar-root {
       width: 70px;
@@ -245,6 +247,12 @@ export const UpdateModal = styled.div`
       background: transparent;
       font-weight: 600;
       cursor: pointer;
+
+      @media (max-width: 620px) {
+        padding: 4px 9px;
+        font-weight: 600;
+        width: 120px;
+      }
     }
   }
 
@@ -275,6 +283,11 @@ export const UpdateModal = styled.div`
       margin-left: 38px;
       font-weight: 600;
       cursor: pointer;
+      @media (max-width: 620px) {
+        padding: 4px 9px;
+        font-weight: 600;
+        width: 120px;
+      }
     }
   }
 `;

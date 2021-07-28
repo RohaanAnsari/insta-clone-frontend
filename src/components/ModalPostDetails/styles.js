@@ -10,10 +10,29 @@ export const Wrapper = styled.div`
   background: black;
   width: 100rem;
   cursor: pointer;
+
+  @media (max-width: 1030px) {
+    height: 610px;
+    width: 800px;
+  }
+
+  @media (max-width: 830px) {
+    height: 610px;
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    height: 610px;
+    width: 480px;
+  }
 `;
 
 export const LeftContainer = styled.div`
   width: 65%;
+
+  @media (max-width: 500px) {
+    width: 65%;
+  }
 
   div {
     height: 100%;
@@ -31,6 +50,10 @@ export const LeftContainer = styled.div`
 export const RightContainer = styled.div`
   background: #ffffff;
   width: 35%;
+
+  @media (max-width: 500px) {
+    width: 65%;
+  }
 
   header {
     display: flex;
@@ -172,6 +195,10 @@ export const CommentController = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow-y: hidden;
+
+  @media (max-width: 1030px) {
+    display: none;
+  }
 
   input {
     width: 85%;

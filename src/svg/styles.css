@@ -1,0 +1,6 @@
+@media only screen and (max-width: 600px) {
+  .newChat {
+    height: 19px !important;
+    width: 19px !important;
+  }
+}

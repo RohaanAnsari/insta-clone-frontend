@@ -16,6 +16,18 @@ export const Center = styled.div`
   @media (max-width: 550px) {
     padding-top: 7rem;
   }
+
+  @media (max-width: 550px) {
+    padding-top: 7rem;
+  }
+
+  @media (max-width: 450px) {
+    padding-top: 7rem;
+  }
+
+  @media (max-width: 390px) {
+    padding-top: 8rem !important;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -37,8 +49,22 @@ export const Wrapper = styled.div`
 
   -ms-overflow-style: none;
 
+  @media (max-width: 580px) {
+    min-height: 92vh;
+  }
+
   @media (max-width: 550px) {
     min-height: 89vh;
+    margin-top: -1.5rem;
+  }
+
+  @media (max-width: 450px) {
+    min-height: 100vh;
+    width: 48rem;
+  }
+
+  @media (max-width: 405px) {
+    min-height: 111vh;
   }
 `;
 
@@ -51,7 +77,7 @@ export const ContainerLeft = styled.div`
   overflow: hidden;
 
   @media (max-width: 1000px) {
-    min-width: 270px;
+    display: none;
   }
   @media (max-width: 550px) {
     min-width: 200px;
@@ -66,6 +92,15 @@ export const ContainerRight = styled.div`
   width: 100%;
   height: 87vh;
   overflow: hidden;
+  /* background-color: red; */
+  @media (max-width: 450px) {
+    min-height: 100vh;
+    width: 48rem;
+  }
+
+  @media (max-width: 405px) {
+    min-height: 111vh;
+  }
 `;
 
 export const InitialDiv = styled.div`
@@ -76,6 +111,10 @@ export const InitialDiv = styled.div`
   height: 85vh;
   margin-top: -3.7rem;
   flex-direction: column;
+
+  @media (max-width: 450px) {
+    min-height: 95vh;
+  }
 
   span {
     display: flex;
@@ -155,6 +194,10 @@ export const Top = styled.div`
   align-items: center;
   justify-content: ${({ jc }) => jc || 'center'};
 
+  @media (max-width: 900px) {
+    height: 60px;
+  }
+
   h4 {
     font-size: 16px;
     font-weight: 600;
@@ -204,6 +247,13 @@ export const Chat = styled.div`
   transition: background-color 0.3s linear;
   cursor: pointer;
 
+  @media (max-width: 600px) {
+    & .MuiAvatar-root {
+      height: 50px !important;
+      width: 50px !important;
+    }
+  }
+
   & .MuiAvatar-root {
     height: 60px;
     width: 60px;
@@ -212,6 +262,13 @@ export const Chat = styled.div`
   div {
     display: flex;
     align-items: center;
+
+    @media (max-width: 600px) {
+      span {
+        margin-left: 9px !important;
+        /* margin-top: 5px; */
+      }
+    }
     span {
       margin-left: 15px;
 
@@ -236,6 +293,10 @@ export const NewMessage = styled.h4`
   color: ${({ color }) => color || '#262626'};
   @media (max-width: 900px) {
     width: 85%;
+    font-size: 12px;
+  }
+  @media (max-width: 900px) {
+    width: 100%;
     font-size: 12px;
   }
 `;
@@ -263,16 +324,36 @@ export const Header = styled.div`
   padding: 5px 15px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  h1 {
-    font-weight: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    margin-left: 10px;
+  @media (max-width: 450px) {
+    height: 60px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    h1 {
+      font-weight: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      margin-left: 10px;
+      cursor: pointer;
+
+      &:hover {
+        border-bottom: 1px solid darkgray;
+      }
+    }
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+
     cursor: pointer;
-
-    &:hover {
-      border-bottom: 1px solid darkgray;
+    & .MuiSvgIcon-root {
+      font-size: 24px;
+      /* fill: red; */
     }
   }
 `;
@@ -300,6 +381,13 @@ export const Upper = styled.div`
   padding-left: 10px;
 
   padding-bottom: 5.5rem;
+
+  @media (max-width: 450px) {
+    max-height: 91vh;
+  }
+  @media (max-width: 450px) {
+    max-height: 102vh;
+  }
 
   & .scroll {
     width: 100%;

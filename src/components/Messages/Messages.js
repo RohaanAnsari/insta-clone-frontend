@@ -17,7 +17,7 @@ import ReactScrollableFeed from 'react-scrollable-feed';
 import { Attachment, Emoji, Like } from '../../svg';
 import { Popover } from '../../components';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
-
+import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
 import {
   Center,
   Wrapper,
@@ -45,6 +45,8 @@ import {
   getConversation,
 } from '../../actions/conversation.actions';
 import { useHistory, useLocation } from 'react-router-dom';
+import Drawer from '../Drawer/Drawer';
+import useWindowSize from '../../helpers/useWindowSize';
 
 const Messages = () => {
   const dispatch = useDispatch();
@@ -62,6 +64,19 @@ const Messages = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const [open, setOpen] = useState(false);
+
+  const [height, width] = useWindowSize();
+
+  const handleOpen = () => {
+    setOpen(true);
+    console.log('..');
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   useEffect(() => {
     if (location.pathname === '/messages') {
       socket.current = io('ws://localhost:5500');
@@ -74,10 +89,6 @@ const Messages = () => {
       });
     });
   }, [location.pathname === '/messages']);
-
-  //   useEffect(() => {
-  //     arrivalMessage && dispatch(getMessages(conversation.conversationId));
-  //   }, [arrivalMessage]);
 
   useEffect(() => {
     const members = conversation.chats.map((e) => e.members);
@@ -110,10 +121,11 @@ const Messages = () => {
   };
 
   const handleSubmit = (e, msg) => {
+    console.log(e);
+    e.preventDefault();
     if (msg === '') {
       return;
     } else {
-      e.preventDefault();
       const message = {
         sender: auth.user._id,
         text: msg,
@@ -155,20 +167,51 @@ const Messages = () => {
           <Head />
           <ChatSection>
             <Popover anchorEl={anchorEl} handleClose={closePopOver}>
-              <Delete onClick={() => conversationDelete()}>
+              <Delete
+                onClick={() => {
+                  conversationDelete();
+                  console.log('I was clicked');
+                }}
+              >
                 <p>Delete</p>
                 <span>
                   <DeleteOutlineOutlinedIcon />
                 </span>
               </Delete>
             </Popover>
+            <Drawer open={open} onClose={handleClose} width="287px">
+              <Head />
+              {user.userChats.map((user) => {
+                return (
+                  <Chat style={{ zIndex: '99999999' }}>
+                    <div
+                      onClick={() => {
+                        getText(user);
+                        setCurrentChat(user);
+                        handleClose();
+                      }}
+                    >
+                      <Avatar src={user.profilePicture} />
+                      <span>
+                        <h3>{user.name}</h3>
+                        <NewMessage color="#8e8e8e">
+                          Sent you a message
+                        </NewMessage>
+                      </span>
+                    </div>
+                    <Button onClick={(event) => openPopOver(event, user)}>
+                      <MoreVertIcon />
+                    </Button>
+                  </Chat>
+                );
+              })}
+            </Drawer>
             {user.userChats.map((user) => {
               return (
                 <Chat
                   onClick={() => {
                     getText(user);
                     setCurrentChat(user);
-                    //   console.log(user);
                   }}
                 >
                   <div>
@@ -190,18 +233,23 @@ const Messages = () => {
         </ContainerLeft>
         <ContainerRight>
           {currentChat === null ? (
-            <InitialUi />
+            <InitialUi handleOpen={handleOpen} />
           ) : (
             <ChatArea>
               <Header>
-                <Avatar src={conversation?.receiver?.profilePicture} />
-                <h1
-                  onClick={() => {
-                    history.push(`/profile/${conversation.receiver._id}`);
-                  }}
-                >
-                  {conversation?.receiver?.name}
-                </h1>
+                <div>
+                  <Avatar src={conversation?.receiver?.profilePicture} />
+                  <h1
+                    onClick={() => {
+                      history.push(`/profile/${conversation.receiver._id}`);
+                    }}
+                  >
+                    {conversation?.receiver?.name}
+                  </h1>
+                </div>
+                <span onClick={handleOpen}>
+                  <FormatAlignRightIcon />
+                </span>
               </Header>
               <Main>
                 <Upper alignItems="flex-start">
@@ -276,7 +324,7 @@ const Messages = () => {
 
 export default Messages;
 
-const InitialUi = () => {
+const InitialUi = ({ handleOpen }) => {
   return (
     <>
       <InitialDiv>
@@ -290,7 +338,7 @@ const InitialUi = () => {
           <NewMessage>
             Send private photos and messages to a friend or group.
           </NewMessage>
-          <button>Send Message</button>
+          <button onClick={handleOpen}>Send Message</button>
         </span>
       </InitialDiv>
     </>

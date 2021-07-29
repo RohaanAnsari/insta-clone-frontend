@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import storage from 'redux-persist/lib/storage';
 import authReducer from './auth.reducer';
 import userReducer from './user.reducer';
 import postReducer from './post.reducer';

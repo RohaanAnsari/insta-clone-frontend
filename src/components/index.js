@@ -22,3 +22,4 @@ export { default as Info } from './Info/Info';
 export { default as Popover } from './Popover/Popover';
 export { default as SavedPost } from './SavedPost/SavedPost';
 export { default as GoToPost } from './GoToPost/GoToPost';
+export { default as Drawer } from './Drawer/Drawer';

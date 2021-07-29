@@ -15,7 +15,7 @@ import {
 } from '../../actions/conversation.actions';
 import ReactScrollableFeed from 'react-scrollable-feed';
 import { Attachment, Emoji, Like } from '../../svg';
-import { Popover } from '../../components';
+import { Popover, Drawer } from '../../components';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
 import {
@@ -45,7 +45,7 @@ import {
   getConversation,
 } from '../../actions/conversation.actions';
 import { useHistory, useLocation } from 'react-router-dom';
-import Drawer from '../Drawer/Drawer';
+// import Drawer from '../Drawer/Drawer';
 import useWindowSize from '../../helpers/useWindowSize';
 
 const Messages = () => {

@@ -316,6 +316,10 @@ export const ChatArea = styled.section`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+
+  @media (max-width: 450px) {
+    min-height: 111vh;
+  }
 `;
 
 export const Header = styled.div`

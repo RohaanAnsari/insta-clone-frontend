@@ -79,6 +79,7 @@ export const ContentRight = styled.section`
         display: flex;
         flex-direction: column;
         margin-left: 15px;
+        cursor: pointer;
         h4 {
           font-size: 14px;
           font-weight: 600;

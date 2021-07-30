@@ -418,7 +418,11 @@ const Home = () => {
         <header>
           <div>
             <Avatar src={auth.user.profilePicture} alt="profile" />
-            <span>
+            <span
+              onClick={() => {
+                history.push(`/profile`);
+              }}
+            >
               <h4>{auth.user.name}</h4>
               <p>{auth.user.fullName}</p>
             </span>

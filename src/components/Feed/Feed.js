@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 const Feed = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const stageCanvasRef = useRef(null);
+
   const post = useSelector((state) => state.post);
   const [open, setOpen] = useState(false);
   const [item, setItem] = useState({});
@@ -32,21 +32,12 @@ const Feed = () => {
   useEffect(() => {
     setTimeout(() => {
       setPosts(post.posts);
-      // setPosts(null);
     }, 1000);
   });
-  let width;
-  useEffect(() => {
-    if (stageCanvasRef.current) {
-      let height = stageCanvasRef.current.offsetHeight;
-      width = stageCanvasRef.current.offsetWidth;
-      console.log('height', height, 'width', width);
-    }
-  }, [stageCanvasRef, window.addEventListener('resize', stageCanvasRef)]);
 
   const skeleton = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
-    <Wrapper ref={stageCanvasRef}>
+    <Wrapper>
       {posts === null
         ? skeleton.map((item) => (
             <Skeleton

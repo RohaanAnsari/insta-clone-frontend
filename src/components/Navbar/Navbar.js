@@ -40,7 +40,13 @@ const Navbar = () => {
           <Icons>
             <div>
               {localStorage.getItem('location') === 'home' ? (
-                <HomeActive />
+                <Link to="/">
+                  <Icon
+                    onClick={() => localStorage.setItem('location', 'home')}
+                  >
+                    <HomeActive />
+                  </Icon>
+                </Link>
               ) : (
                 <Link to="/">
                   <Icon
@@ -53,7 +59,13 @@ const Navbar = () => {
             </div>
             <div>
               {localStorage.getItem('location') === 'messages' ? (
-                <ChatActive />
+                <Link to="/messages">
+                  <Icon
+                    onClick={() => localStorage.setItem('location', 'messages')}
+                  >
+                    <ChatActive />
+                  </Icon>
+                </Link>
               ) : (
                 <Link to="/messages">
                   <Icon
@@ -66,7 +78,15 @@ const Navbar = () => {
             </div>
             <div>
               {localStorage.getItem('location') === 'feed' ? (
-                <FeedActive />
+                <Link to="feed">
+                  <Icon
+                    onClick={() => {
+                      localStorage.setItem('location', 'feed');
+                    }}
+                  >
+                    <FeedActive />
+                  </Icon>
+                </Link>
               ) : (
                 <Link to="feed">
                   <Icon
@@ -93,7 +113,11 @@ const Navbar = () => {
 
             <div>
               {localStorage.getItem('location') === 'profile' ? (
-                <ProfileActive />
+                <Link to="/profile">
+                  <ProfileActive
+                    onClick={() => localStorage.setItem('location', 'profile')}
+                  />
+                </Link>
               ) : (
                 <>
                   <Link to="/profile">

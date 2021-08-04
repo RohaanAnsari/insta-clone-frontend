@@ -120,11 +120,16 @@ export const Icons = styled.div`
   padding: 0 0 0 24px;
   display: flex;
   justify-content: space-around;
+
   @media (max-width: 500px) {
     padding: 0 0 0 20px;
   }
   @media (max-width: 500px) {
     padding: 0 0 0 40px;
+  }
+
+  div {
+    cursor: pointer;
   }
 `;
 

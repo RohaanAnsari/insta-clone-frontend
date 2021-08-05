@@ -18,7 +18,7 @@ Note :-  <strong> This is the Front End part of the application </strong>
  <li> Follow and Unfollow functionality </li>
  <li> Get your Followings posts on Home page</li>
  <li> Get the rest of posts on Feed page </li>
- <li> Go to post page for each post </li>s
+ <li> Go to post page for each post </li>
  <li> Manage your followings on your profile page </li>
  <li> Complete chatting functionality using socket.io </li>
  <li> Add new conversation </li>

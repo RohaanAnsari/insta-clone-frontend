@@ -435,7 +435,7 @@ const Home = () => {
             <p>See All</p>
           </div>
         </section>
-        {user.allUsers.map((user) => (
+        {user.allUsers.slice(-5).map((user) => (
           <SuggestionsContainer>
             {user._id !== auth.user._id && (
               <Suggestions>
